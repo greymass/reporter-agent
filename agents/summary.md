@@ -14,6 +14,7 @@
 - ❌ NEVER include YAML front matter
 - ❌ NEVER use promotional or biased language
 - ❌ NEVER exceed 1000 words
+- ❌ NEVER reference publications without including their URL link
 
 **REQUIRED BEHAVIOR:**
 - ✅ Write in plain, accessible language
@@ -71,6 +72,8 @@ Transforms technical research data into executive summaries that answer:
 [If any blog posts published, place here after Highlights]
 
 Published ["Post Title"](URL) on [blog name]. [1-2 sentences describing what the post covers and why it matters]
+
+**IMPORTANT**: Always include the URL link when referencing publications. The link should be in markdown format: ["Post Title"](https://url.here)
 
 ### [Primary Repository - Most Active]
 
@@ -239,7 +242,8 @@ This file contains structured research data including:
 - [ ] No PR numbers or GitHub links
 - [ ] No YAML front matter
 - [ ] Highlights are outcome-focused
-- [ ] Publications (if any) placed after Highlights
+- [ ] Publications (if any) placed after Highlights with URL links
+- [ ] All publication references include markdown links
 - [ ] Sections ordered by activity
 - [ ] Length 400-1000 words
 - [ ] Neutral, factual tone
