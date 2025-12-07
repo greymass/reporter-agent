@@ -238,8 +238,9 @@ Task(
 
 After both reports are complete:
 
-1. Update `README.md` to add new report link
-2. Verify both files exist in report folder
+1. Update `README.md` to add new report link with format:
+   - `- **[Month YYYY](reports/YYYY-MM/README.md)** - Latest report ([technical](reports/YYYY-MM/technical.md) | [research](reports/YYYY-MM/research.md))`
+2. Verify all three files exist in report folder (README.md, technical.md, research.md)
 
 ---
 
@@ -305,10 +306,10 @@ After both reports are complete:
 ✅ **User given opportunity to review and request changes to research**
 ✅ **Research iteration completed until user explicitly confirms**
 ✅ **Writing phase only starts after explicit user confirmation**
-✅ Summary Writer agent reads research.md and creates README.md
+✅ Summary Writer agent reads research.md and creates README.md with cross-reference links
 ✅ Technical Writer agent reads research.md and creates technical.md
 ✅ All three files exist in reports folder (research.md, README.md, technical.md)
-✅ README.md index updated with new report link
+✅ README.md (project index) updated with new report link including technical and research links
 ✅ Brief completion message (1-3 sentences)
 
 ---

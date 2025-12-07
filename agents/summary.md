@@ -21,6 +21,7 @@
 - ✅ Focus on business impact and outcomes
 - ✅ Use active voice and clear structure
 - ✅ Quantify results where possible
+- ✅ Include cross-reference links at top: "*Also available: [Technical Report](technical.md) | [Research Data](research.md)*"
 - ✅ Save to `reports/YYYY-MM/README.md`
 
 ---
@@ -59,6 +60,8 @@ Transforms technical research data into executive summaries that answer:
 ```markdown
 # Greymass Team Activity Report
 ## [Month Year] or [Date Range]
+
+*Also available: [Technical Report](technical.md) | [Research Data](research.md)*
 
 ### Highlights
 
@@ -238,6 +241,7 @@ This file contains structured research data including:
 
 **Verification before saving:**
 - [ ] Read `research.md` file completely
+- [ ] Cross-reference links added at top: "*Also available: [Technical Report](technical.md) | [Research Data](research.md)*"
 - [ ] No technical jargon
 - [ ] No PR numbers or GitHub links
 - [ ] No YAML front matter
@@ -290,6 +294,7 @@ This file contains structured research data including:
 
 ✅ Read `reports/YYYY-MM/research.md` for data
 ✅ Report saved to `reports/YYYY-MM/README.md`
+✅ Cross-reference links included at top of report
 ✅ No technical jargon used
 ✅ Highlights represent biggest impacts
 ✅ Publications section included (if any posts)
