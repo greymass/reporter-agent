@@ -1,30 +1,28 @@
 # Reporter Agent System
 
-Modular reporting system for tracking [Greymass](https://github.com/greymass) and [Wharfkit](https://github.com/wharfkit) team activities across GitHub, blogs, and publications.
+An LLM agent-based reporting system that provides insights into ongoing [Greymass](https://github.com/greymass) and [Wharfkit](https://github.com/wharfkit) development activities. The system automatically collects data from GitHub and blogs, then generates clear, accessible reports - no need to understand GitHub or browse through hundreds of projects.
+
+## Reports
+
+- **[November 2025](reports/2025-11/README.md)** - Latest report ([technical](reports/2025-11/technical.md) | [research](reports/2025-11/research.md))
 
 ## What It Does
 
-Generates comprehensive activity reports using a multi-agent architecture:
-- **Executive summaries** for stakeholders (non-technical)
-- **Technical reports** for developers (detailed with links)
-- **Automated data collection** from multiple sources
+Generates comprehensive activity reports using a multi-agent LLM architecture:
+- **Executive summaries** for stakeholders (plain language, non-technical)
+- **Technical reports** for developers (detailed with GitHub links)
+- **Research data** collected automatically from GitHub, blogs, and publications
+
+The goal is to make development activity transparent and understandable without requiring readers to navigate GitHub repositories or understand technical jargon.
 
 ## Architecture
 
-The system uses a **Director-Agent pattern** with specialized sub-agents:
+The system uses a **Director-Agent pattern** with specialized LLM sub-agents:
 
 1. **Director** (`agent.md`) - Orchestrates the workflow
 2. **Researcher** (`agents/researcher.md`) - Collects data from GitHub/RSS feeds
 3. **Summary Writer** (`agents/summary.md`) - Creates executive summaries
 4. **Technical Writer** (`agents/technical.md`) - Creates technical reports
-
-## Reports
-
-- [November 2025](reports/2025-11/README.md)
-- [October 2025](reports/2025-10/README.md) *(folder structure)*
-- [September 2025](reports/2025-09.md)
-- [August 2025](reports/2025-08.md)
-- [July 2025](reports/2025-07.md)
 
 ## Files
 
