@@ -1,0 +1,10 @@
+# Ensure static assets are served as files, not routed through SPA
+/og-image.png  /og-image.png  200
+/og-image.svg  /og-image.svg  200
+/*.png         /:splat.png    200
+/*.svg         /:splat.svg    200
+/*.ico         /:splat.ico    200
+/*.txt         /:splat.txt    200
+
+# All other routes handled by Astro
+/*  /index.html  200

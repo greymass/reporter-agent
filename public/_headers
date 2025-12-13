@@ -1,0 +1,16 @@
+# Static assets
+/og-image.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/og-image.svg
+  Content-Type: image/svg+xml
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Content-Type: image/svg+xml
+  Cache-Control: public, max-age=31536000, immutable
