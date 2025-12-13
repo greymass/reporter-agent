@@ -1,0 +1,289 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { extractHighlights } from '../utils/extractHighlights';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+
+// Get all reports and sort by date (newest first)
+const allReports = await getCollection('docs');
+
+// Filter for README files (summary reports)
+const summaryReports = allReports
+  .filter(report => report.id.toLowerCase().includes('readme'))
+  .filter(report => !report.id.includes('test-')) // Exclude test reports
+  .sort((a, b) => b.id.localeCompare(a.id));
+
+// Extract year-month from report ID (e.g., "2025-11/README.md" -> "2025-11")
+function getReportSlug(id: string) {
+  return id.replace(/\/README\.md$/i, '').replace(/\/README$/i, '');
+}
+
+// Parse report title from ID
+function getReportTitle(id: string) {
+  const match = id.match(/(\d{4})-(\d{2})/);
+  if (!match) return id;
+  const [, year, month] = match;
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return `${monthNames[parseInt(month) - 1]} ${year}`;
+}
+
+// Parse month/year for timeline display
+function getMonthYear(id: string) {
+  const match = id.match(/(\d{4})-(\d{2})/);
+  if (!match) return { month: '', year: '' };
+  const [, year, month] = match;
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return {
+    month: monthNames[parseInt(month) - 1],
+    year
+  };
+}
+
+// Prepare timeline data with highlights
+const timelineReports = await Promise.all(
+  summaryReports.map(async (report) => {
+    let highlights: string[] = [];
+    
+    try {
+      // Content collection IDs don't include the base path
+      // report.id looks like "2025-11/README.md"
+      const filePath = join(process.cwd(), 'reports', report.id);
+      const markdown = await readFile(filePath, 'utf-8');
+      highlights = extractHighlights(markdown);
+    } catch (e) {
+      // Try without .md extension
+      try {
+        const filePathAlt = join(process.cwd(), 'reports', report.id.replace(/\.md$/i, '') + '.md');
+        const markdown = await readFile(filePathAlt, 'utf-8');
+        highlights = extractHighlights(markdown);
+      } catch (e2) {
+        console.warn(`Could not read highlights for ${report.id}`, e);
+      }
+    }
+    
+    return {
+      id: report.id,
+      slug: getReportSlug(report.id),
+      title: getReportTitle(report.id),
+      monthYear: getMonthYear(report.id),
+      highlights
+    };
+  })
+);
+---
+
+<BaseLayout title="Greymass Reporter" description="Development activity reports for Greymass and WharfKit projects">
+  <!-- Hero Section -->
+  <div class="hero bg-gradient-to-br from-primary/10 to-secondary/10 py-20">
+    <div class="hero-content text-center">
+      <div class="max-w-3xl">
+        <h1 class="text-5xl font-bold text-primary mb-6">Reporter Agent System</h1>
+        <p class="text-xl text-base-content/70 mb-8">
+          Development activity reports for Greymass and WharfKit projects
+        </p>
+        
+        <div class="flex gap-4 justify-center">
+          <a href="/reports/2025-11/readme/" class="btn btn-primary btn-lg">
+            View Latest Report
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline Section -->
+  <div class="container mx-auto px-4 py-16 max-w-5xl">
+    <h2 class="text-3xl font-bold text-center mb-8">Development Timeline</h2>
+    
+    <!-- About Section (Collapsible) -->
+    <div class="flex justify-center mb-12">
+      <div class="collapse collapse-arrow bg-base-200 shadow-md max-w-3xl">
+        <input type="checkbox" /> 
+        <div class="collapse-title text-sm font-medium min-h-0">
+          About these reports
+        </div>
+        <div class="collapse-content"> 
+          <div class="prose prose-sm max-w-none text-left">
+            <p class="mb-2">
+              <strong>Greymass</strong> is a blockchain infrastructure company focused on building tools, wallets, and SDKs for Antelope-based blockchains. We maintain open-source projects including <a href="https://github.com/wharfkit" target="_blank" rel="noopener">WharfKit</a>, <a href="https://github.com/greymass/unicove" target="_blank" rel="noopener">Unicove Wallet</a>, and various developer tools.
+            </p>
+            <p class="mb-0">
+              These monthly reports provide transparency into our team's development activities. Each report includes a <strong>Summary</strong> (executive overview), <strong>Technical</strong> details (commits, PRs, issues), and <strong>Research</strong> data (raw GitHub activity). Reports are generated automatically using a multi-agent LLM system.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="relative">
+      <!-- Timeline line (hidden on mobile) -->
+      <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary/20"></div>
+      
+      {timelineReports.map((report, index) => {
+        const isLeft = index % 2 === 0;
+        return (
+          <div class="relative mb-12 md:mb-16">
+            <div class={`flex flex-col md:grid md:grid-cols-2 md:gap-8 items-center`}>
+              
+              {/* Left side (even indices) */}
+              {isLeft && (
+                <>
+                  {/* Card on left */}
+                  <div class="w-full order-2 md:order-1">
+                    <a href={`/reports/${report.slug}/readme/`} class="block">
+                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all hover:scale-[1.02]">
+                        <div class="card-body">
+                          <h3 class="card-title text-primary text-xl mb-3">{report.title}</h3>
+                          
+                          {report.highlights.length > 0 && (
+                            <ul class="space-y-2 text-sm text-base-content/80 text-left">
+                              {report.highlights.slice(0, 4).map(highlight => (
+                                <li class="flex items-start gap-2">
+                                  <span class="text-primary flex-shrink-0 mt-0.5">▸</span>
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          
+                          <div class="card-actions justify-start gap-2 mt-4 pt-4 border-t border-base-300">
+                            <a href={`/reports/${report.slug}/readme/`} class="btn btn-sm btn-primary">
+                              Read Summary
+                            </a>
+                            <a href={`/reports/${report.slug}/technical/`} class="btn btn-sm btn-ghost">
+                              Technical
+                            </a>
+                            <a href={`/reports/${report.slug}/research/`} class="btn btn-sm btn-ghost">
+                              Research
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  
+                  {/* Badge in center */}
+                  <div class="flex justify-center order-1 md:order-2 mb-4 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10">
+                    <div class="flex flex-col items-center justify-center w-20 h-20 rounded-full bg-primary text-primary-content shadow-lg font-bold">
+                      <div class="text-xl leading-none">{report.monthYear.month}</div>
+                      <div class="text-sm opacity-90 mt-1">{report.monthYear.year}</div>
+                    </div>
+                  </div>
+                </>
+              )}
+              
+              {/* Right side (odd indices) */}
+              {!isLeft && (
+                <>
+                  {/* Badge in center */}
+                  <div class="flex justify-center order-1 mb-4 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10">
+                    <div class="flex flex-col items-center justify-center w-20 h-20 rounded-full bg-primary text-primary-content shadow-lg font-bold">
+                      <div class="text-xl leading-none">{report.monthYear.month}</div>
+                      <div class="text-sm opacity-90 mt-1">{report.monthYear.year}</div>
+                    </div>
+                  </div>
+                  
+                  {/* Card on right */}
+                  <div class="w-full order-2 md:col-start-2">
+                    <a href={`/reports/${report.slug}/readme/`} class="block">
+                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all hover:scale-[1.02]">
+                        <div class="card-body">
+                          <h3 class="card-title text-primary text-xl mb-3">{report.title}</h3>
+                          
+                          {report.highlights.length > 0 && (
+                            <ul class="space-y-2 text-sm text-base-content/80 text-left">
+                              {report.highlights.slice(0, 4).map(highlight => (
+                                <li class="flex items-start gap-2">
+                                  <span class="text-primary flex-shrink-0 mt-0.5">▸</span>
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          
+                          <div class="card-actions justify-start gap-2 mt-4 pt-4 border-t border-base-300">
+                            <a href={`/reports/${report.slug}/readme/`} class="btn btn-sm btn-primary">
+                              Read Summary
+                            </a>
+                            <a href={`/reports/${report.slug}/technical/`} class="btn btn-sm btn-ghost">
+                              Technical
+                            </a>
+                            <a href={`/reports/${report.slug}/research/`} class="btn btn-sm btn-ghost">
+                              Research
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </>
+              )}
+              
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="bg-base-200 py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h2 class="text-3xl font-bold text-center mb-12">What It Does</h2>
+      <div class="prose prose-lg max-w-none">
+        <p>
+          Generates comprehensive activity reports using a multi-agent LLM architecture:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 not-prose mt-8">
+          <div class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+              <div class="text-4xl mb-4">📊</div>
+              <h3 class="card-title text-lg">Executive Summaries</h3>
+              <p class="text-sm">Plain language, non-technical overviews for stakeholders</p>
+            </div>
+          </div>
+          <div class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+              <div class="text-4xl mb-4">⚙️</div>
+              <h3 class="card-title text-lg">Technical Reports</h3>
+              <p class="text-sm">Detailed development activity with GitHub links</p>
+            </div>
+          </div>
+          <div class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+              <div class="text-4xl mb-4">🔍</div>
+              <h3 class="card-title text-lg">Research Data</h3>
+              <p class="text-sm">Automated collection from GitHub, blogs, and publications</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resources Section -->
+  <div class="container mx-auto px-4 py-16 max-w-4xl">
+    <h2 class="text-3xl font-bold text-center mb-12">Resources</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="https://github.com/greymass/reporter-agent/blob/master/README.md" target="_blank" rel="noopener" class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="card-body">
+          <h3 class="card-title text-sm">Full Documentation</h3>
+          <p class="text-xs opacity-70">Complete system documentation</p>
+        </div>
+      </a>
+      <a href="https://github.com/greymass/reporter-agent/blob/master/github-projects.md" target="_blank" rel="noopener" class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="card-body">
+          <h3 class="card-title text-sm">GitHub Projects</h3>
+          <p class="text-xs opacity-70">Projects reference guide</p>
+        </div>
+      </a>
+      <a href="https://github.com/greymass/reporter-agent/tree/master/agents" target="_blank" rel="noopener" class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+        <div class="card-body">
+          <h3 class="card-title text-sm">Agent System</h3>
+          <p class="text-xs opacity-70">Multi-agent architecture docs</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

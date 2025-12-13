@@ -1,0 +1,102 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentMonth: string;
+  currentType: string; // readme, technical, research
+}
+
+const { currentMonth, currentType } = Astro.props;
+
+// Get all reports to find previous/next
+const allReports = await getCollection('docs');
+const months = [...new Set(
+  allReports
+    .map(r => r.id.match(/^(\d{4}-\d{2})/)?.[1])
+    .filter((m): m is string => Boolean(m))
+)]
+  .filter(m => !m.includes('test-'))
+  .sort()
+  .reverse();
+
+const currentIndex = months.indexOf(currentMonth);
+const previousMonth = currentIndex < months.length - 1 ? months[currentIndex + 1] : null;
+const nextMonth = currentIndex > 0 ? months[currentIndex - 1] : null;
+
+// Format month for display
+function formatMonth(month: string | null): string {
+  if (!month) return '';
+  const [year, monthNum] = month.split('-');
+  const date = new Date(parseInt(year), parseInt(monthNum) - 1);
+  return date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
+// Determine which reports are available for current month
+const availableReports = allReports
+  .filter(r => r.id.startsWith(currentMonth))
+  .map(r => r.id.split('/').pop()?.replace(/\.md$/i, '').toLowerCase())
+  .filter(Boolean);
+
+const hasReadme = availableReports.includes('readme');
+const hasTechnical = availableReports.includes('technical');
+const hasResearch = availableReports.includes('research');
+---
+
+<div class="not-prose my-8">
+  <!-- Month Navigation -->
+  <div class="flex items-center justify-between mb-6 p-4 bg-base-200 rounded-lg">
+    <div class="flex-1">
+      {previousMonth && (
+        <a href={`/reports/${previousMonth}/${currentType}/`} class="btn btn-ghost btn-sm gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          {formatMonth(previousMonth)}
+        </a>
+      )}
+    </div>
+    
+    <div class="flex-shrink-0 px-4 font-semibold text-center">
+      {formatMonth(currentMonth)}
+    </div>
+    
+    <div class="flex-1 flex justify-end">
+      {nextMonth && (
+        <a href={`/reports/${nextMonth}/${currentType}/`} class="btn btn-ghost btn-sm gap-2">
+          {formatMonth(nextMonth)}
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </div>
+
+  <!-- Report Type Tabs -->
+  <div class="tabs tabs-boxed justify-center bg-base-200">
+    {hasReadme && (
+      <a 
+        href={`/reports/${currentMonth}/readme/`} 
+        class={`tab ${currentType === 'readme' ? 'tab-active' : ''}`}
+      >
+        📊 Summary
+      </a>
+    )}
+    {hasTechnical && (
+      <a 
+        href={`/reports/${currentMonth}/technical/`} 
+        class={`tab ${currentType === 'technical' ? 'tab-active' : ''}`}
+      >
+        ⚙️ Technical
+      </a>
+    )}
+    {hasResearch && (
+      <a 
+        href={`/reports/${currentMonth}/research/`} 
+        class={`tab ${currentType === 'research' ? 'tab-active' : ''}`}
+      >
+        🔍 Research
+      </a>
+    )}
+  </div>
+</div>

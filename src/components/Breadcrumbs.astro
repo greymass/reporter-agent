@@ -1,0 +1,33 @@
+---
+interface Props {
+  month: string;
+  reportType: string;
+}
+
+const { month, reportType } = Astro.props;
+
+// Format month for display (2025-11 -> November 2025)
+const [year, monthNum] = month.split('-');
+const monthName = new Date(parseInt(year), parseInt(monthNum) - 1).toLocaleDateString('en-US', { 
+  month: 'long', 
+  year: 'numeric' 
+});
+
+// Map report type to friendly name
+const reportTypeMap: Record<string, string> = {
+  'readme': 'Summary',
+  'technical': 'Technical',
+  'research': 'Research'
+};
+
+const displayType = reportTypeMap[reportType.toLowerCase()] || reportType;
+---
+
+<div class="text-sm breadcrumbs mb-6">
+  <ul>
+    <li><a href="/" class="link link-hover">Home</a></li>
+    <li><a href="/" class="link link-hover">Reports</a></li>
+    <li><a href={`/reports/${month}/readme/`} class="link link-hover">{monthName}</a></li>
+    <li class="font-semibold">{displayType}</li>
+  </ul>
+</div>

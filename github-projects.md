@@ -515,9 +515,8 @@ This file provides comprehensive information about repositories across Greymass,
 - **Name**: Vaulta Smart Contracts
 - **URL**: https://github.com/aaroncox/vaulta-contracts
 - **Visibility**: Public
-- **Branch**: https://github.com/aaroncox/vaulta-contracts/tree/Sentiment
-- **Purpose**: Smart contracts for sentiment voting system
-- **Description**: Base smart contracts enabling stake-weighted sentiment voting. These contracts record votes, calculate stake-weights, manage topics, and serve as the on-chain foundation that sentiment-api reads from and Unicove interacts with
+- **Purpose**: Collection of smart contracts for various Vaulta network features
+- **Description**: Repository containing multiple smart contracts including API contracts, token registries, account creation contracts, sentiment voting, and other network functionality. Each contract serves a specific purpose within the Vaulta ecosystem.
 - **Status**: Active development
 - **Stack**: Antelope smart contracts (C++)
 

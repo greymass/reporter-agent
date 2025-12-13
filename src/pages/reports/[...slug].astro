@@ -1,0 +1,64 @@
+---
+import { getCollection } from 'astro:content';
+import ReportLayout from '../../layouts/ReportLayout.astro';
+
+export async function getStaticPaths() {
+  const reports = await getCollection('docs');
+  
+  const paths = reports.map((report) => {
+    // Transform ID: "2025-11/README.md" -> slug: "2025-11/readme"
+    const slug = report.id
+      .replace(/\.md$/i, '')
+      .toLowerCase();
+    
+    return {
+      params: { slug },
+      props: { entry: report },
+    };
+  });
+
+  // Add redirects for /reports/YYYY-MM/ -> /reports/YYYY-MM/readme/
+  const redirectPaths = reports
+    .filter(r => r.id.toLowerCase().includes('readme'))
+    .map(report => {
+      const baseSlug = report.id.match(/^(.+?)\/readme/i)?.[1];
+      if (!baseSlug) return null;
+      
+      return {
+        params: { slug: baseSlug },
+        redirect: `/reports/${baseSlug}/readme/`,
+      };
+    })
+    .filter(Boolean);
+
+  return [...paths, ...redirectPaths];
+}
+
+import { transformMarkdownLinks } from '../../utils/transformMarkdownLinks';
+
+const { entry } = Astro.props;
+
+// Handle redirects (entry will be undefined for redirect paths)
+if (!entry) {
+  return Astro.redirect(Astro.url.pathname + '/readme/');
+}
+
+// Extract metadata
+const reportType = entry.id.split('/').pop()?.replace(/\.md$/i, '') || 'Report';
+const month = entry.id.match(/^(\d{4}-\d{2})/)?.[1] || '';
+const title = `${reportType} - ${month}`;
+
+// Extract first paragraph as description for SEO
+const htmlContent = entry.rendered?.html || '';
+const descMatch = htmlContent.match(/<p>(.+?)<\/p>/);
+const description = descMatch 
+  ? descMatch[1].replace(/<[^>]*>/g, '').substring(0, 160) 
+  : undefined;
+
+// Transform markdown links
+const transformedContent = transformMarkdownLinks(htmlContent, month);
+---
+
+<ReportLayout title={title} month={month} reportType={reportType} description={description}>
+  <div set:html={transformedContent} />
+</ReportLayout>

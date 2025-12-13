@@ -1,41 +1,97 @@
 # Technical Activity Report
 ## November 2025
 
-**Summary**: November 2025 focused on three major technical initiatives: (1) building a complete sentiment polling infrastructure stack from smart contracts to API to UI, (2) developing comprehensive multisig proposal tooling and documentation for the Vaulta Foundation transition, and (3) establishing a new multisig data infrastructure powered by the Roborovski msig indexing service. Additional work included Web Authenticator UI refinements, Unicove localization prototyping, and EVM bridge frontend development following the Vaulta EVM shutdown.
+**Navigation**: [← Previous Month](../2025-10/technical.md)
 
-**Metrics**:
-- Total PRs merged: 4
-- Direct commits across repositories: 111
-- Repositories active: 15
-- New repositories created: 5 (4 Greymass, 1 Wharfkit)
-- Organizations: Greymass, Wharfkit, Individual (aaroncox)
-- Notable launches: msigs.io, sentiment voting at unicove.com
+*Also available: [Executive Summary](README.md) | [Research Data](research.md)*
+
+November 2025 focused on three major technical initiatives: (1) building a complete sentiment polling infrastructure stack from smart contracts to API to UI, (2) developing comprehensive multisig proposal tooling and documentation for the Vaulta Foundation transition, and (3) establishing a new multisig data infrastructure powered by the Roborovski msig indexing service. Additional work included Web Authenticator UI refinements, Unicove localization prototyping, and EVM bridge frontend development following the Vaulta EVM shutdown.
+
+**Key Achievements**:
+- Launched sentiment polling system with stake-weighted voting across smart contract, API, and UI layers
+- Built complete proposal system with search engine (msigs.io) supporting governance transition
+- Deployed Roborovski multisig indexer providing queryable proposal data infrastructure
+- Improved Web Authenticator signing interface reducing onboarding confusion
+- Restored bridge interface enabling token holders to recover assets after EVM shutdown
+- Published WharfKit proposal libraries enabling developer access to multisig data
+- Created 5 new repositories establishing governance and sentiment polling infrastructure
+
+**Technical Significance**: November marked a strategic pivot toward governance infrastructure development responding to Vaulta Foundation transition. The sentiment polling stack demonstrates full-stack capability: smart contract implementation, backend API service, and production frontend integration at Unicove. Roborovski indexer establishes critical data infrastructure making proposal information queryable and accessible across applications. Work directly addresses foundation shutdown by providing community-managed governance tools and protecting user access to bridged assets. This month established foundational infrastructure for decentralized governance and community coordination.
 
 ---
 
 ## Table of Contents
 
+- [Cross-Repository Insights](#cross-repository-insights)
 - [Greymass Organization](#greymass-organization)
-  - [greymass/web-authenticator](#greymasswebweb-authenticator)
-  - [greymass/unicove](#greymassgreymass/unicove)
-  - [greymass/sextant](#greymassgreymass/sextant)
-  - [greymass/evm-bridge-frontend](#greymassgreymass/evm-bridge-frontend)
-  - [greymass/roborovski](#greymassgreymass/roborovski)
-  - [greymass/msigs](#greymassgreymass/msigs)
-  - [greymass/msigs-ui](#greymassgreymass/msigs-ui)
-  - [greymass/sentiment-api](#greymassgreymass/sentiment-api)
-  - [greymass/unicove-components](#greymassgreymass/unicove-components)
+  - [greymass/web-authenticator](#greymassweb-authenticator)
+  - [greymass/unicove](#greymassunicove)
+  - [greymass/sextant](#greymasssextant)
+  - [greymass/evm-bridge-frontend](#greymassevm-bridge-frontend)
+  - [greymass/roborovski](#greymassroborovski)
+  - [greymass/msigs](#greymassmsigs)
+  - [greymass/msigs-ui](#greymassmsigs-ui)
+  - [greymass/sentiment-api](#greymasssentiment-api)
+  - [greymass/unicove-components](#greymassunicove-components)
 - [Wharfkit Organization](#wharfkit-organization)
-  - [wharfkit/website](#wharfkitwharfkit/website)
-  - [wharfkit/console-renderer](#wharfkitwharfkit/console-renderer)
-  - [wharfkit/msigs](#wharfkitwharfkit/msigs)
-  - [wharfkit/mock-data](#wharfkitwharfkit/mock-data)
-  - [wharfkit/roborovski](#wharfkitwharfkit/roborovski)
+  - [wharfkit/website](#wharfkitwebsite)
+  - [wharfkit/console-renderer](#wharfkitconsole-renderer)
+  - [wharfkit/msigs](#wharfkitmsigs)
+  - [wharfkit/mock-data](#wharfkitmock-data)
+  - [wharfkit/roborovski](#wharfkitroborovski)
 - [Individual Developer Activity](#individual-developer-activity)
-  - [aaroncox/vaulta-contracts](#aaroncoxaaroncox/vaulta-contracts)
+  - [aaroncox/vaulta-contracts](#aaroncoxvaulta-contracts)
 - [New Repositories](#new-repositories)
-- [Publications](#publications)
-- [Architecture Changes](#architecture-changes)
+- [Development Patterns](#development-patterns)
+
+---
+
+## Cross-Repository Insights
+
+### Sentiment Polling Full-Stack Integration
+
+**Integration**: Complete sentiment voting system spanning smart contract, API service, and frontend UI across three repositories.
+
+**How It Works**:
+- vaulta-contracts implemented sentiment voting smart contract (aaroncox/vaulta-contracts) with stake-weighted voting logic and voter storage management
+- sentiment-api provides backend service (greymass/sentiment-api) querying contract state and serving voting data through REST API
+- Unicove integrated sentiment UI (greymass/unicove) displaying polls, vote submission, and real-time results visualization
+
+**Technical Benefit**: Three-layer architecture separates concerns: smart contract handles blockchain logic and data storage, API service provides efficient data access without direct blockchain queries, frontend focuses on user experience. This pattern enables multiple frontends to consume the same data through shared API without duplicating blockchain integration logic.
+
+**Strategic Impact**: Demonstrates capability to deliver complete product features spanning full technical stack. First production launch of stake-weighted community sentiment system on Antelope. Provides mechanism for token holder opinion visibility without binding governance decisions. Launched with self-referential first poll asking community if feature is valuable.
+
+---
+
+### Multisig Infrastructure with Roborovski Indexer
+
+**Integration**: Roborovski indexer providing queryable multisig data consumed by multiple applications.
+
+**How It Works**:
+- Roborovski service (greymass/roborovski) indexes multisig proposals from blockchain, maintaining queryable database of proposal history, status, and metadata
+- msigs.io application (greymass/msigs-ui) consumes Roborovski API to provide public search engine for browsing and filtering proposals
+- Unicove (greymass/unicove) integrates Roborovski data for proposal visualization within block explorer context
+- WharfKit libraries (wharfkit/roborovski, wharfkit/msigs) provide developer-friendly access to proposal data
+
+**Technical Benefit**: Indexer pattern eliminates need for each application to query blockchain directly and build own proposal state. Single indexer service provides consistent data to multiple consumers. WharfKit library abstraction enables any developer to integrate proposal data without understanding indexer implementation details.
+
+**Strategic Impact**: Establishes shared infrastructure for governance tools. msigs.io public search engine provides transparency into proposal process during foundation transition. Multiple consumer pattern demonstrates infrastructure thinking: build once, reuse across applications. Critical for decentralized governance requiring proposal visibility.
+
+---
+
+### WharfKit Proposal Library Ecosystem
+
+**Integration**: Shared TypeScript libraries enabling developer access to multisig and proposal data.
+
+**How It Works**:
+- wharfkit/msigs library provides proposal query interfaces, data models, and helper functions for multisig operations
+- wharfkit/roborovski library wraps Roborovski indexer API in TypeScript types and query builders
+- Libraries enable applications to integrate proposal functionality with type safety and consistent patterns
+- wharfkit/mock-data provides test fixtures for development without live blockchain dependency
+
+**Technical Benefit**: Library abstraction reduces implementation complexity for applications needing proposal data. Type safety prevents runtime errors from API misuse. Mock data enables faster development and testing. Consistent patterns across WharfKit ecosystem improve developer experience and code maintainability.
+
+**Strategic Impact**: Lowers barrier for community developers to build governance-aware applications. Open source libraries enable ecosystem growth beyond Greymass-built applications. Establishes WharfKit as governance data access layer for Antelope applications.
 
 ---
 
@@ -798,89 +854,71 @@ Created Sentiment branch and initial project structure for sentiment voting cont
 
 ---
 
-## Publications
+## Development Patterns
 
-### "Stake-weighted Sentiment"
+### Rapid Full-Stack Prototyping
 
-**Published**: 2025-11-19  
-**URL**: https://jesta.blog/p/stake-weighted-sentiment  
-**Source**: https://jesta.blog/feed
+**Pattern**: Building complete product features from smart contract to API to UI within days leveraging existing infrastructure.
 
-**Summary**: Introduction and explanation of a new stake-weighted sentiment system prototype enabling DPoS token holders to express support or opposition to ideas and topics. The system gauges community sentiment in a decentralized way rather than relying solely on leadership decisions.
+**Example**: Sentiment voting system developed from concept (Nov 16) to public launch (Nov 19) spanning three layers:
+- Smart contracts (aaroncox/vaulta-contracts) deployed Nov 17
+- API service (greymass/sentiment-api) built Nov 17-19  
+- Unicove UI integration completed and launched Nov 19
+- Blog post published Nov 19 announcing the feature
 
-**Key Topics**:
-- **Sentiment Voting System**: Smart contract and UI enabling stake-weighted voting on topics and ideas
-- **DPoS Governance Evolution**: Moving from top-down leadership to bottom-up community consensus
-- **User Experience**: Positions weighted by staked tokens, votes stored on-chain using user's RAM and can be removed to reclaim RAM
-- **Real-time Consensus**: Provides real-time snapshot of overall sentiment with sufficient participation
-- **Prototype Launch**: Launched at https://unicove.com/en/vaulta/topic/sentiment with first topic about the system's utility
-- **Technical Implementation**: Built rapidly leveraging existing Wharf and Unicove infrastructure
-- **Call to Action**: Encourages community participation to determine system value
-
-**Technical Details**:
-- Votes stored on-chain using voter's RAM allocation
-- Support/opposition expressed as binary choice
-- Weight calculated based on staked token amount
-- Topics consist of human-readable identifier and text description
-- Topics page shows all active topics sorted by total weight
-- Current implementation requires authorized accounts to create topics
-- System depends on engagement to determine future development
-
-**Technical Context**: This publication directly relates to three repositories: aaroncox/vaulta-contracts (sentiment branch) for smart contracts created Nov 16-17, greymass/sentiment-api created Nov 17, and the Unicove integration - demonstrating the complete development and deployment cycle from concept to working prototype to public announcement.
+**Impact**: Demonstrates capability to rapidly iterate on ideas and ship complete features. Existing Wharf/Unicove infrastructure enabled 3-day turnaround from concept to public launch. Rapid prototyping allows community feedback before heavy investment.
 
 ---
 
-## Architecture Changes
+### Indexer-as-Infrastructure Pattern
 
-### Multisig Data Infrastructure
+**Pattern**: Building centralized indexing services that multiple applications consume through shared APIs, reducing redundant blockchain queries.
 
-**Repository**: greymass/roborovski  
-**Change**: Built new multisig indexing service and API as a prototype on top of existing Roborovski history solution
+**Example**: Roborovski multisig indexer establishes shared data infrastructure:
+- Single indexer service queries blockchain and maintains proposal database
+- REST API provides queryable access to indexed data
+- Multiple consumers (msigs.io, Unicove, future applications) use same API
+- TypeScript library (wharfkit/msigs) provides type-safe client interface
 
-**Previous Approach**: No dedicated multisig proposal indexing - applications would need to query blockchain data directly
-
-**New Approach**: 
-- Roborovski msig indexer indexes all multisig proposals from the Vaulta blockchain
-- Provides queryable REST API for applications
-- TypeScript client library (wharfkit/msigs) wraps API with type-safe interface
-- Reference implementation (msigs.io via greymass/msigs-ui) demonstrates integration patterns
-
-**Rationale**: 
-- Enables fast, filtered queries of multisig proposal data
-- Reduces blockchain query load for applications
-- Provides consistent data model across applications
-- Powers both msigs.io (public tool) and future Unicove multisig features
-
-**Data Flow**: Blockchain → Roborovski indexer → REST API → Applications (msigs.io, Unicove)
-
-**Impact**: Establishes foundation for multisig functionality across the ecosystem with a single, shared data infrastructure
+**Impact**: Eliminates need for each application to build own indexing logic. Reduces blockchain query load by centralizing data access. Consistent data model across applications improves reliability. Pattern applicable to other blockchain data types beyond multisigs.
 
 ---
 
-### Sentiment Voting System
+### Reference Implementation as Documentation
 
-**Repositories**: aaroncox/vaulta-contracts (sentiment branch), greymass/sentiment-api, unicove
+**Pattern**: Building production applications that simultaneously serve users and demonstrate API integration patterns for developers.
 
-**Change**: Introduced complete stake-weighted sentiment voting system from smart contracts to API to UI
+**Example**: msigs.io (greymass/msigs-ui) serves dual purpose:
+- Production tool: Public search engine for browsing multisig proposals
+- Reference implementation: Demonstrates how to integrate wharfkit/msigs library and Roborovski API
+- Future Unicove multisig features will reuse integration patterns established in msigs.io
 
-**Architecture Stack**:
-1. **Smart Contracts** (aaroncox/vaulta-contracts): On-chain storage and logic for vote recording, stake-weight calculation, topic management
-2. **Indexing API** (greymass/sentiment-api): Reads from contracts, indexes data, provides fast query endpoints
-3. **Frontend** (Unicove): Consumes API to display real-time stake-weighted sentiment
+**Impact**: Code as documentation provides working examples beyond written guides. Developers can study production application code to understand best practices. Reduces learning curve for API adoption. Ensures documentation examples reflect real-world usage.
 
-**Technical Implementation**:
-- Smart contracts provide readonly query actions (getweight/getweights) for efficient API access
-- API uses embedded Drizzle ORM with blockchain syncing for real-time updates
-- Votes stored on-chain using voter's RAM allocation
-- Timestamp tracking enables real-time sentiment changes
-- Pagination support for topics listing
+---
 
-**Rationale**: 
-- Provides visibility into token holder opinions through stake-weighted polling
-- Enables real-time sentiment measurement to inform block producers without requiring formal proposals
-- Leverages existing Wharf/Unicove infrastructure for rapid development
-- Uses RAM allocation model to prevent spam while allowing vote flexibility
+### Crisis Response Through Community Infrastructure
 
-**Development Timeline**: Complete system from concept (Nov 16) to deployed contracts (Nov 17) to working API (Nov 17-19) to public launch (Nov 19)
+**Pattern**: Rapidly deploying community-managed alternatives when centralized services shut down.
 
-**Impact**: Introduces sentiment polling primitive for DPoS blockchains, allowing token holders to express opinions that can inform block producer decisions without directly impacting governance
+**Example**: EVM bridge frontend restoration following Vaulta Foundation's October shutdown:
+- Foundation shut down EVM bridge, leaving users unable to access withdrawal interface
+- Forked and relaunched bridge frontend (greymass/evm-bridge-frontend) to restore access
+- Protects user funds by maintaining withdrawal functionality
+- Demonstrates commitment to user access over organizational continuity
+
+**Impact**: Community-managed infrastructure provides resilience against single-point-of-failure governance. Rapid response preserves user trust during transitions. Fork-and-relaunch pattern applicable to other at-risk services.
+
+---
+
+### Documentation as Governance Tool
+
+**Pattern**: Using structured documentation and proposal repositories to facilitate transparent governance transitions.
+
+**Example**: greymass/msigs repository contains comprehensive governance proposals addressing foundation transition:
+- 4 detailed proposals covering account creation, contract deployment, permissions, platform capabilities
+- Technical diagrams and comparison tables
+- Versioned documentation enabling community review and refinement
+- Public search engine (msigs.io) makes proposals discoverable and reviewable
+
+**Impact**: Transparent documentation enables informed community participation in governance. Version control provides audit trail for proposal evolution. Public visibility increases accountability. Pattern establishes expectations for future governance proposals.

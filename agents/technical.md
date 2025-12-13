@@ -8,13 +8,23 @@
 
 ## ⚠️ Agent Response Style - CRITICAL RULES
 
-**ABSOLUTE PROHIBITIONS:**
+**ABSOLUTE PROHIBITIONS (enforced by audits):**
 - ❌ NEVER write in marketing/promotional language
 - ❌ NEVER add YAML front matter
 - ❌ NEVER create separate files per repo (use one technical.md)
+- ❌ NEVER include velocity metrics (PR counts, percentages, "X% of activity")
+- ❌ NEVER include forward-looking references to future months
+- ❌ NEVER include Publications section (blog posts belong in executive summaries only)
+- ❌ NEVER quantify effort levels (avoid "intensive development", "heavy focus", "significant effort")
+- ❌ NEVER place Summary section at end of document (must be at top)
 
-**REQUIRED BEHAVIOR:**
-- ✅ Include GitHub links and PR numbers
+**REQUIRED BEHAVIOR (enforced by audits):**
+- ✅ Include Navigation section linking to adjacent months
+- ✅ Include cross-document links to README.md and research.md
+- ✅ Include Cross-Repository Insights section (before repositories)
+- ✅ Include Key Achievements in header
+- ✅ Include Technical Significance in header
+- ✅ Include GitHub links and PR numbers throughout
 - ✅ Use accurate technical terminology
 - ✅ Provide implementation details
 - ✅ Link to discussions with significant context
@@ -41,38 +51,62 @@ Creates comprehensive technical reports that answer:
 3. **Context** - Explain why changes were made
 4. **Organization** - Group by repository and theme
 5. **Traceability** - Link to GitHub for verification
+6. **Continuity** - Link to previous months for ongoing projects
 
 ---
 
 ## Report Structure Template
 
+**CRITICAL - Document Structure Order**:
+1. Header (title, navigation, summary, key achievements, technical significance)
+2. Table of Contents
+3. Cross-Repository Insights (if applicable)
+4. Individual Repository Sections
+5. New Repositories (if applicable)
+
+**This ordering is mandatory and enforced by audits.**
+
 ```markdown
 # Technical Activity Report
 ## [Month Year] or [Date Range]
 
-**Summary**: Brief overview of technical work (2-3 sentences)
+**Navigation**: [← Previous Month](../YYYY-MM/technical.md) | [Next Month →](../YYYY-MM/technical.md)
 
-**Metrics**:
-- Total PRs merged: X
-- Repositories active: Y
-- New repositories: Z
-- Top contributors: [list]
-- Total comments/discussions: N
+*Also available: [Executive Summary](README.md) | [Research Data](research.md)*
+
+[Opening paragraph: 2-3 sentences providing high-level overview of the month's work]
+
+**Key Achievements**:
+- Achievement 1
+- Achievement 2
+- Achievement 3
+- Achievement 4
+
+**Technical Significance**: [1-2 sentences explaining the broader technical impact or patterns]
 
 ---
 
 ## Table of Contents
 
+- [Cross-Repository Insights](#cross-repository-insights)
 - [Repository 1](#repository-1)
 - [Repository 2](#repository-2)
 - [New Repositories](#new-repositories)
-- [Publications](#publications)
+
+---
+
+## Cross-Repository Insights
+
+[Cross-cutting technical insights showing how repositories work together - see "Cross-Repository Insights Section" below for detailed guidelines]
 
 ---
 
 ## Repository 1
 
-**Activity**: X PRs merged | Y commits pushed
+**Repository**: https://github.com/org/repo-name  
+**Activity**: X PRs merged | Y commits pushed  
+**Previous Context**: See [Month YYYY](../YYYY-MM/technical.md#repo-name) *(for ongoing projects only)*  
+**Related Work**: See [other-repo](#other-repo) *(optional - for coordinated efforts)*
 
 ### Overview
 
@@ -122,26 +156,15 @@ Creates comprehensive technical reports that answer:
 ### org/repo-name
 
 **Created**: YYYY-MM-DD  
-**Description**: [From README]  
-**Purpose**: [Technical purpose]  
-**Initial Activity**: X commits/PRs in period  
-**Repository**: [link](url)
+**Repository**: https://github.com/org/repo-name  
+**Purpose**: [One sentence description]  
+**Technology Stack**: [Key technologies, languages, frameworks]  
+**Initial Activity**: X commits/PRs in first month
 
-**Technology Stack**: [Languages, frameworks from README/package.json]
-
----
-
-## Publications
-
-### Blog Post Title
-
-**Published**: YYYY-MM-DD  
-**URL**: [link](url)  
-**Summary**: [Technical summary of content]
-
-**Key Topics**:
-- Topic 1
-- Topic 2
+**Key Features** (if significant):
+- Feature 1
+- Feature 2
+- Feature 3
 
 ---
 
@@ -206,6 +229,38 @@ Creates comprehensive technical reports that answer:
 ---
 
 ## Writing Guidelines
+
+### Previous Context References
+
+For ongoing projects (active in multiple consecutive months):
+
+**Format**: `**Previous Context**: See [Month YYYY](../YYYY-MM/technical.md#repo-name)`
+
+**When to include**:
+- Multi-month feature development
+- Continued architectural work
+- Phase 2/3 of larger initiatives
+- Related to prior month's significant work
+
+**When to omit**:
+- First mention of a repository
+- Unrelated work from prior month
+- Routine maintenance months
+
+### Related Work References
+
+For coordinated efforts across repositories in same month:
+
+**Format**: `**Related Work**: See [other-repo](#other-repo)`
+
+**When to include**:
+- Repositories working on same feature/initiative
+- Coordinated launches (CLI + plugin, contract + UI)
+- Dependencies between repositories
+
+**When to omit**:
+- Independent work
+- Coincidental timing
 
 ### Include GitHub Links
 
@@ -276,6 +331,71 @@ Keep examples <20 lines.
 
 ---
 
+## Cross-Repository Insights Section
+
+**Purpose**: Document how multiple repositories work together as coordinated systems, integration stacks, or interdependent infrastructure. This section explains RELATIONSHIPS between repositories, not just thematic similarities.
+
+**Section Name**: "Cross-Repository Insights" (use this exact name consistently across all reports)
+
+**Location**: Place AFTER Table of Contents and BEFORE repository sections. This ordering is mandatory:
+1. Header (with navigation, summary, key achievements, technical significance)
+2. Table of Contents
+3. Cross-Repository Insights
+4. Individual Repository Sections
+
+**What to Include** (must involve 2+ repositories with technical relationships):
+- ✅ Integration stacks (e.g., antelope-snap + wallet-plugin-metamask working together)
+- ✅ Infrastructure ecosystems (e.g., lighthouse + lighthouse-js + related tools)
+- ✅ Coordinated releases across multiple repos
+- ✅ Dependency relationships (e.g., "unicove integrates with web-authenticator")
+- ✅ Architectural decisions spanning multiple codebases
+- ✅ Cross-repository refactoring efforts (e.g., "3 WharfKit repos migrated to new API")
+- ✅ Core library changes with downstream impact (e.g., "wharfkit/antelope improvement enabled work in wallet-plugin-metamask")
+- ✅ Timeline synthesis showing coordinated development across repos
+
+**What to Exclude**:
+- ❌ Single-repository achievements (even if impressive - those go in repo sections)
+- ❌ Thematic groupings without technical relationships (e.g., "developer experience improvements" across unrelated repos)
+- ❌ Lists of independent work that happens to share a theme
+- ❌ Strategic categorizations without explaining technical integration
+- ❌ Release management of single repositories
+
+**CRITICAL - Temporal References**:
+- ✅ **ONLY backward-looking connections** to previous months
+- ✅ Reference work from this month and earlier months
+- ✅ "This builds on June work..." (if current month is July+)
+- ✅ "Following the May foundation..." (if current month is June+)
+- ❌ **NEVER forward-looking connections** to future months
+- ❌ NO "This would enable..." or "Foundation for August work"
+- ❌ NO "This would see intensive development in [future month]"
+- ❌ NO references to months after the report period
+
+**Why This Matters**: Reports are written from the perspective of that month. The writer cannot know what will happen in future months.
+
+**Example Good Pattern**:
+```markdown
+### Coordinated MetaMask Ecosystem Development
+
+The June 5-19 period saw coordinated creation of the MetaMask integration stack:
+1. June 5: Create antelope-snap repository
+2. June 13: Fix initial bugs
+3. June 17: Migrate to WharfKit architecture
+
+This builds on the May authentication framework improvements (see [May 2024](../2024-05/technical.md#authentication)).
+```
+
+**Example Bad Pattern**:
+```markdown
+❌ This staged implementation established the foundation for MetaMask integration 
+   that would see intensive development in August 2024.
+   
+❌ Future: Foundation for production deployment (August-September)
+
+❌ This work would enable the Ledger integration in July
+```
+
+---
+
 ## Input: Research Data File
 
 **Read from**: `reports/YYYY-MM/research.md` (created by Researcher agent)
@@ -315,21 +435,32 @@ This file contains comprehensive research data including:
 
 1. **Read research data** from `reports/YYYY-MM/research.md`
 2. **Verify folder exists**: Check that `reports/YYYY-MM/` was created
-3. **Organize by repository** (most active first)
-4. **For each repository**:
+3. **Add navigation**:
+   - Link to previous month's technical.md (if exists)
+   - Link to next month's technical.md (if exists)
+   - Link to same month's README.md and research.md
+   - Format: `**Navigation**: [← Previous Month](../YYYY-MM/technical.md) | [Next Month →](../YYYY-MM/technical.md)`
+   - Format: `*Also available: [Executive Summary](README.md) | [Research Data](research.md)*`
+4. **Create header summary**:
+   - Write 2-3 sentence overview paragraph
+   - List key achievements (4-6 bullet points)
+   - Add technical significance statement (1-2 sentences)
+5. **Create Cross-Repository Insights section**:
+   - Identify repositories working together as systems/stacks
+   - Document technical relationships and dependencies
+   - Show coordinated development patterns
+6. **Organize repositories** (most active first):
    - Group PRs by theme (major vs minor)
    - Extract technical details from PR body summaries
    - Include discussion summaries with technical context
    - Note breaking changes or performance metrics
    - **Cite sources**: Include GitHub links from research.md
-5. **Create special sections**:
-   - New repositories (with README context)
-   - Notable discussions (with decision context)
-   - Dependency updates
-   - Performance improvements
-   - Architecture changes
-6. **Include source references**: When making technical claims, reference the GitHub URLs from research.md
-7. **Save**: Write to `reports/YYYY-MM/technical.md`
+7. **Create New Repositories section** (if applicable):
+   - Document newly created repositories with README context
+8. **Include source references**: When making technical claims, reference the GitHub URLs from research.md
+9. **Save**: Write to `reports/YYYY-MM/technical.md`
+10. **Update adjacent month's navigation** (if previous month exists):
+    - Update previous month's technical.md to add forward link to this new report
 
 **Using research.md effectively**:
 - All PR numbers and GitHub URLs are already formatted
@@ -373,6 +504,71 @@ This file contains comprehensive research data including:
 
 ---
 
+## CRITICAL: Delta Reporting Pattern
+
+**Principle**: Document CHANGES and NEW WORK, not full state. Cross-reference previous reports for background.
+
+**Core Pattern** (follow `reports/2025-11/technical.md:44-100`):
+
+```
+For each repository/concept/architecture:
+├─ First mention in ANY report? → Full description
+└─ Mentioned before? → Brief update + link to previous report
+```
+
+### Decision Trees
+
+**Repositories:**
+- **New repo**: Full context with purpose, tech stack, architecture
+- **Existing repo**: Activity summary + `**Previous Context**: See [Month YYYY](link)` + focus on this month's changes only
+
+**Architecture:**
+- **First documentation**: Full architecture explanation with data flow, components, rationale
+- **Architecture unchanged**: `**Status**: No architectural changes` + link to previous + note improvements only
+- **Architecture changed**: Describe delta + `**Previous Architecture**: See [Month YYYY](link)` + impact
+
+**Technical Concepts:**
+- **First mention anywhere**: Full explanation OR link to `reports/glossary.md`
+- **Subsequent mentions**: Link to glossary or first explanation
+
+**Background Events:**
+- **First mention**: Full context
+- **Later mentions**: `**Background**: See [Month YYYY](link)` + activity only
+
+**Cross-Repository Work:**
+- **First report**: Full multi-repo context showing relationships
+- **Later reports**: Per-repo updates + `**Stack Overview**: See [Month YYYY](link)`
+
+### Key Rules
+
+**DO:**
+- ✅ Always link to previous context
+- ✅ Always show progression/changes
+- ✅ Read previous 2-3 months' technical reports before writing
+- ✅ Check `reports/glossary.md` for technical concepts
+- ✅ Use this header for returning repositories:
+
+```markdown
+## org/repo-name
+
+**Repository**: [URL]  
+**Previous Context**: See [Month YYYY](../YYYY-MM/technical.md#anchor)
+
+**Activity This Month**: X PRs merged
+
+### Changes This Month
+[Only what changed this month]
+```
+
+**DO NOT:**
+- ❌ Never repeat repository descriptions
+- ❌ Never re-explain unchanged architectures
+- ❌ Never include ASCII diagrams (use bullet points for structure)
+- ❌ Never repeat background events
+- ❌ Never re-explain technical concepts (link instead)
+
+---
+
 ## Anti-Patterns (DO NOT DO)
 
 ❌ DO NOT omit PR numbers
@@ -383,23 +579,46 @@ This file contains comprehensive research data including:
 ❌ DO NOT skip performance metrics when available
 ❌ DO NOT fail to cite sources for technical claims
 ❌ DO NOT create report without reading research.md first
+❌ DO NOT repeat repository descriptions from previous reports
+❌ DO NOT re-explain architectures that haven't changed
+❌ DO NOT include ASCII diagrams
+❌ DO NOT re-explain technical concepts (link to glossary or first explanation)
+❌ DO NOT repeat background events (link to first mention)
 
 ---
 
 ## Success Criteria
 
 ✅ Read `reports/YYYY-MM/research.md` for data
+✅ Read previous 2-3 months of technical reports for context
+✅ Check glossary for technical concept explanations
 ✅ Report saved to `reports/YYYY-MM/technical.md`
+✅ Header includes summary paragraph, key achievements, and technical significance
+✅ Summary appears at top (after month/year title), not at end of document
+✅ Navigation links to previous/next month technical.md files included
+✅ Cross-references to same month's README.md and research.md included
+✅ Previous month's technical.md updated with forward navigation link (if applicable)
 ✅ All PRs listed with numbers and links (from research.md)
+✅ All GitHub links are complete and correctly formatted
+✅ All markdown links properly structured with URLs
+✅ All links verified to use correct format (https://github.com/org/repo/pull/123)
 ✅ Technical terminology used accurately
 ✅ Significant discussions summarized with source links
 ✅ Breaking changes clearly called out
 ✅ Performance metrics included where applicable
-✅ New repositories documented with tech stack
+✅ New repositories documented with tech stack (first mention only)
+✅ Existing repositories reference previous reports instead of repeating descriptions
+✅ Architectures documented once, referenced thereafter with links
+✅ No ASCII diagrams included
+✅ Technical concepts link to glossary or first explanation
+✅ Background events reference first mention, not repeated
 ✅ Repository links functional (copied from research.md)
 ✅ Organized by repository and theme
-✅ Technical claims cite GitHub sources
+✅ Technical claims cite GitHub sources with complete URLs
+✅ All dates and chronological references are accurate
+✅ No references to events occurring after the report period
 ✅ Focus on work and decisions, not individuals
+✅ Cross-repository relationships explained once, referenced thereafter
 
 ---
 
