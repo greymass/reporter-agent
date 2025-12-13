@@ -105,43 +105,49 @@ const timelineReports = summaryReports.map((report) => {
         const isLeft = index % 2 === 0;
         return (
           <div class="relative mb-12 md:mb-16">
-            <div class={`flex flex-col md:grid md:grid-cols-2 md:gap-8 items-center`}>
+            <div class={`flex flex-col md:grid md:grid-cols-2 md:gap-20 items-center`}>
               
               {/* Left side (even indices) */}
               {isLeft && (
                 <>
                   {/* Card on left */}
-                  <div class="w-full order-2 md:order-1">
-                    <a href={`/reports/${report.slug}/readme/`} class="block">
-                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all hover:scale-[1.02]">
-                        <div class="card-body">
-                          <h3 class="card-title text-primary text-xl mb-3">{report.title}</h3>
-                          
-                          {report.highlights.length > 0 && (
-                            <ul class="space-y-2 text-sm text-base-content/80 text-left">
-                              {report.highlights.slice(0, 4).map(highlight => (
-                                <li class="flex items-start gap-2">
-                                  <span class="text-primary flex-shrink-0 mt-0.5">▸</span>
-                                  <span>{highlight}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                          
-                          <div class="card-actions justify-start gap-2 mt-4 pt-4 border-t border-base-300">
+                  <div class="w-full order-2 md:order-1 md:pr-8">
+                    <div class="card bg-base-100 shadow-xl">
+                      <div class="card-body">
+                        <h3 class="card-title text-primary text-xl mb-3">{report.title}</h3>
+                        
+                        {report.highlights.length > 0 && (
+                          <ul class="space-y-2 text-sm text-base-content/80 text-left">
+                            {report.highlights.slice(0, 4).map(highlight => (
+                              <li class="flex items-start gap-2">
+                                <span class="text-primary flex-shrink-0 mt-0.5">▸</span>
+                                <span>{highlight}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        
+                        <div class="flex justify-between items-center mt-4 pt-4 border-t border-base-300">
+                          <div class="flex gap-2">
                             <a href={`/reports/${report.slug}/readme/`} class="btn btn-sm btn-primary">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
                               Read Summary
                             </a>
-                            <a href={`/reports/${report.slug}/technical/`} class="btn btn-sm btn-ghost">
+                            <a href={`/reports/${report.slug}/technical/`} class="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white border-0">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                              </svg>
                               Technical
                             </a>
-                            <a href={`/reports/${report.slug}/research/`} class="btn btn-sm btn-ghost">
-                              Research
-                            </a>
                           </div>
+                          <a href={`/reports/${report.slug}/research/`} class="btn btn-sm btn-ghost">
+                            Research
+                          </a>
                         </div>
                       </div>
-                    </a>
+                    </div>
                   </div>
                   
                   {/* Badge in center */}
@@ -166,37 +172,43 @@ const timelineReports = summaryReports.map((report) => {
                   </div>
                   
                   {/* Card on right */}
-                  <div class="w-full order-2 md:col-start-2">
-                    <a href={`/reports/${report.slug}/readme/`} class="block">
-                      <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-all hover:scale-[1.02]">
-                        <div class="card-body">
-                          <h3 class="card-title text-primary text-xl mb-3">{report.title}</h3>
-                          
-                          {report.highlights.length > 0 && (
-                            <ul class="space-y-2 text-sm text-base-content/80 text-left">
-                              {report.highlights.slice(0, 4).map(highlight => (
-                                <li class="flex items-start gap-2">
-                                  <span class="text-primary flex-shrink-0 mt-0.5">▸</span>
-                                  <span>{highlight}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                          
-                          <div class="card-actions justify-start gap-2 mt-4 pt-4 border-t border-base-300">
+                  <div class="w-full order-2 md:col-start-2 md:pl-8">
+                    <div class="card bg-base-100 shadow-xl">
+                      <div class="card-body">
+                        <h3 class="card-title text-primary text-xl mb-3">{report.title}</h3>
+                        
+                        {report.highlights.length > 0 && (
+                          <ul class="space-y-2 text-sm text-base-content/80 text-left">
+                            {report.highlights.slice(0, 4).map(highlight => (
+                              <li class="flex items-start gap-2">
+                                <span class="text-primary flex-shrink-0 mt-0.5">▸</span>
+                                <span>{highlight}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        
+                        <div class="flex justify-between items-center mt-4 pt-4 border-t border-base-300">
+                          <div class="flex gap-2">
                             <a href={`/reports/${report.slug}/readme/`} class="btn btn-sm btn-primary">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                              </svg>
                               Read Summary
                             </a>
-                            <a href={`/reports/${report.slug}/technical/`} class="btn btn-sm btn-ghost">
+                            <a href={`/reports/${report.slug}/technical/`} class="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white border-0">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                              </svg>
                               Technical
                             </a>
-                            <a href={`/reports/${report.slug}/research/`} class="btn btn-sm btn-ghost">
-                              Research
-                            </a>
                           </div>
+                          <a href={`/reports/${report.slug}/research/`} class="btn btn-sm btn-ghost">
+                            Research
+                          </a>
                         </div>
                       </div>
-                    </a>
+                    </div>
                   </div>
                 </>
               )}

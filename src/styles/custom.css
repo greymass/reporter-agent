@@ -21,3 +21,9 @@
   --color-base-200: #f4f4f5;
   --color-base-300: #e4e4e7;
 }
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
