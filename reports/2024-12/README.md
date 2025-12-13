@@ -7,53 +7,53 @@
 
 ### Highlights
 
-- Released **Unicove 2.0** as the portal to EOS *offering web wallet, block explorer, and automatic resource management that makes blockchain complexity invisible to users*
-- Launched **EOS Wallet for MetaMask** enabling *MetaMask users to interact with EOS alongside EOS EVM and exSat with one-click installation*
-- Launched **free account creation** allowing new users to *create accounts at no cost using social login authentication*
-- Started development on **Web Authenticator** *exploring browser-based wallet using WebAuthn and passkey technology*
+- Released **Unicove 2.0** for EOS with web wallet, block explorer, and automatic resource handling
+- Launched **EOS Wallet for MetaMask** so MetaMask users can access EOS, EOS EVM, and exSat in one wallet
+- Launched **free account creation** with MetaMask and social logins
+- Started building **Web Authenticator** as a no-download wallet using passkeys
 
 ### Publications
 
-Published ["Progress Update (December 2024)"](https://greymass.medium.com/progress-update-december-2024-49ec7c46a65a) on Medium. The post covers improvements to developer tools including better error handling and account creation validation, MetaMask integration updates with separate owner and active keys for enhanced security, and Anchor wallet updates for both Android and iOS with updated links to current services.
+Published ["Progress Update (December 2024)"](https://greymass.medium.com/progress-update-december-2024-49ec7c46a65a) on Medium. The post covers developer tool improvements, MetaMask integration updates with separate owner and active keys, and Anchor wallet updates.
 
-EOS Network Foundation published ["EOS Simplified: MetaMask Integration, Unicove 2.0, and Free Account Creation"](https://eosnetwork.com/resources/eos-metamask-unicove-free-account-creation/) announcing the release of EOS Wallet for MetaMask (allowing MetaMask users to interact with EOS), Unicove 2.0 as the portal to the EOS network with block explorer and account management, and a free account creation platform for new users with social login authentication.
+EOS Network Foundation published ["EOS Simplified: MetaMask Integration, Unicove 2.0, and Free Account Creation"](https://eosnetwork.com/resources/eos-metamask-unicove-free-account-creation/) announcing EOS Wallet for MetaMask, Unicove 2.0 with block explorer and account management, and free account creation with social logins.
 
 ### Unicove
 
-Released Unicove 2.0 as the portal to the EOS network, serving as the homepage offering information, web wallet, block explorer, and account creation. The platform provides automatic resource management handling CPU, NET, and RAM through transaction fees, making blockchain complexity invisible to users.
+Released Unicove 2.0 for EOS with web wallet, block explorer, and account creation. The platform handles CPU, NET, and RAM automatically through transaction fees so users don't need to manage resources.
 
-Added multi-language support making the platform accessible to international users. Built staking rewards interface, RAM marketplace access, and multisig proposal management. Created token pages showing balances with send functionality, and contract pages for accessing smart contract data.
+Added multi-language support. Built staking rewards interface, RAM marketplace, and multisig proposal management. Created token pages showing balances with send functionality, and contract pages for smart contract data.
 
-Implemented search functionality for accounts, blocks, public keys, and transactions. Added manual account creation workflow for advanced users and permissions management pages. Redesigned homepage highlighting major EOS network components. The platform integrates with all major EOS-compatible wallets including the new EOS Wallet for MetaMask.
+Added search for accounts, blocks, public keys, and transactions. Added manual account creation for advanced users and permissions management pages. Redesigned homepage. Works with all major EOS wallets including EOS Wallet for MetaMask.
 
 ### Web Authenticator
 
-Began development on a new web-based wallet exploring browser-native authentication. The project investigates using WebAuthn and passkey technology to enable blockchain access without downloads or installations. This experimental approach aims to allow users to create accounts and start using applications quickly from any web browser.
+Started building a no-download wallet using passkeys. The project uses WebAuthn and passkey technology for blockchain access without downloads or installations. This lets users create accounts and start using apps quickly from any web browser.
 
-The prototype explores integration with developer tools to potentially offer a quick onboarding experience, removing the traditional barrier of wallet installation that prevents new users from trying blockchain applications.
+The prototype tests integration with developer tools to offer quick onboarding, removing the need to install a wallet before trying blockchain apps.
 
 ### EOS Wallet for MetaMask
 
-Released EOS Wallet for MetaMask, allowing the popular MetaMask wallet to directly interact with EOS network alongside EOS EVM and exSat. The wallet integrates with Unicove through a dedicated landing page where users can install it with one click and create free accounts immediately.
+Released EOS Wallet for MetaMask so MetaMask users can access EOS, EOS EVM, and exSat in one wallet. Users can install it with one click through Unicove and create free accounts immediately.
 
-Implemented security improvements using separate keys for owner and active permissions, reducing risk if signing keys are compromised. Keys are derived using standard methods from MetaMask's secure key storage and backed up automatically through MetaMask's normal backup process. Developers can integrate using the MetaMask Wallet Plugin.
+Added security improvements using separate keys for owner and active permissions, reducing risk if keys are compromised. Keys come from MetaMask's secure storage and back up automatically through MetaMask's backup. Developers can integrate using the MetaMask Wallet Plugin.
 
 ### Anchor Mobile (Android)
 
-Shipped 15 updates focused on stability and usability. Fixed transaction prompt handling to properly check activity state before closing. Improved camera permission request flow for QR code scanning. Enhanced security by hiding private key displays when the app enters background mode.
+Released 15 updates for stability and usability. Fixed transaction prompt handling to check app state before closing. Improved camera permission flow for QR code scanning. Improved security by hiding private keys when the app goes to background.
 
-Updated block explorer and web wallet URLs to point to current services. Fixed internationalization issues with Simplified Chinese detection. Improved error handling for account creation and import workflows. Added ability to clear custom testnet settings.
+Updated block explorer and web wallet URLs to current services. Fixed language detection issues with Simplified Chinese. Improved error handling for account creation and import. Added ability to clear custom testnet settings.
 
 ### Free Account Creation
 
-Launched free account creation platform allowing new users to create accounts at no cost by authenticating with social logins. The system securely requests public keys from the connected wallet (like EOS Wallet for MetaMask) and assigns them to the new account's permissions.
+Launched free account creation so new users can create accounts with social logins at no cost. The system gets public keys from the connected wallet (like EOS Wallet for MetaMask) and assigns them to the new account.
 
-Enhanced mobile platform support enabling account creation directly from mobile applications. Added configuration options to control account limits per email address. The platform integrates with Unicove and supported wallets to provide a seamless onboarding experience.
+Added mobile platform support for account creation directly from mobile apps. Added settings to control account limits per email address. Works with Unicove and supported wallets for easy onboarding.
 
 ### Developer Tools
 
-Fixed table query bug where zero index values failed due to JavaScript's handling of zero as false. Updated MetaMask wallet plugin to support new key retrieval methods coordinating with security improvements in the Antelope Snap.
+Fixed table query bug where zero index values failed. Updated MetaMask wallet plugin to support new key methods matching security improvements in the Antelope Snap.
 
 ### Summary
 
-Merged 60 updates across 8 repositories. December focused on releasing Unicove 2.0 as the EOS network portal, launching EOS Wallet for MetaMask with free account creation, and beginning Web Authenticator development exploring browser-based authentication. These systems combined create a complete onboarding experience where new users can install MetaMask, create a free account, and immediately start using the EOS network.
+Merged 60 updates across 8 repositories. Released Unicove 2.0 for EOS with web wallet and block explorer. Launched EOS Wallet for MetaMask and free account creation with social logins. Started building Web Authenticator as a no-download wallet using passkeys. These systems create a complete onboarding where users can install MetaMask, create a free account, and start using EOS.

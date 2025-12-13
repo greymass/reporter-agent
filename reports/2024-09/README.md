@@ -7,31 +7,31 @@
 
 ### Highlights
 
-- Added **resource management features** to **Unicove** *enabling users to view and manage RAM, CPU, and NET resources*
-- Implemented **staking functionality** for blockchain resource allocation with *user-friendly interfaces*
-- Released **Anchor Mobile Android version 2.2.0** with *improved display scaling and UI fixes*
-- Updated **WharfKit wallet plugins** to support modern web tools with *server-side rendering compatibility*
+- Added **resource management** to Unicove for RAM, staking, and renting CPU and NET
+- Added **homepage**, **charts**, and **contract exploration** to Unicove
+- Added **dark mode**, **checkboxes**, **tables**, and other UI components to Unicove
+- Updated **WharfKit wallet plugins** so they work in modern web apps
 
 ### Unicove
 
-Shipped 24 updates focused on blockchain resource management. Added complete resource overview pages showing RAM, CPU, and NET status with buy and sell operations. Users can now stake resources, rent CPU and NET capacity, and manage RAM allocation through dedicated interfaces.
+Released 24 updates for blockchain resource management. Added resource overview pages showing RAM, CPU, and NET status with buy and sell operations. Users can stake resources, rent CPU and NET capacity, and manage RAM through dedicated pages.
 
-The resource management system provides clear visibility into account resources and makes complex blockchain operations accessible. Each resource type has dedicated pages with forms for buying, selling, staking, and renting operations.
+The resource management system shows account resources clearly and makes blockchain operations easier. Each resource type has its own page with forms for buying, selling, staking, and renting.
 
-Added network information pages, contract exploration features, and data visualization with charts. Improved reusable components with checkboxes, tables, and selection controls. Added dark mode toggle and enhanced styling throughout the interface.
+Added network information pages, contract exploration, and data visualization with charts. Added new UI components including checkboxes, tables, and selection controls. Added dark mode toggle and improved styling throughout.
 
 ### Anchor Mobile (Android)
 
-Released version 2.2.0 with fixes for image scaling on smaller displays and slider interaction improvements. Added automation to update the website when new versions are released. Updated development dependencies and migrated UI features to the updated interface design.
+Released update with fixes for image scaling on smaller displays and slider improvements. Added automatic website updates when new versions release. Updated development tools and enabled updated interface features.
 
 ### WharfKit Wallet Plugins
 
-Updated Wombat, TokenPocket, and Scatter wallet plugins to work with modern web tools. Changed how plugins load external dependencies using dynamic imports, enabling compatibility with advanced development environments. Updated session management dependencies across all plugins.
+Updated Wombat, TokenPocket, and Scatter wallet plugins to work with modern web development tools. Changed how plugins load dependencies so they work in server-side rendering environments. Updated session management across all plugins.
 
 ### Additional Work
 
-Updated the legacy Unicove version with slider component improvements and staking calculation fixes. Made design improvements to the account creation service. Updated Greymass website with latest wallet version information.
+Updated the old Unicove version with slider improvements and staking calculation fixes. Made design improvements to the account creation service. Updated Greymass website with latest wallet information.
 
 ### Summary
 
-Merged 44 updates across 9 repositories. September focused on making blockchain resource management accessible through comprehensive interfaces in Unicove, maintaining mobile wallet stability, and ensuring developer tools work with modern web technologies.
+Merged 44 updates across 9 repositories. Added resource management, homepage, charts, and contract exploration to Unicove. Added dark mode and UI components. Updated WharfKit wallet plugins for modern web apps. Released Anchor Mobile update.

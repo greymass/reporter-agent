@@ -8,42 +8,42 @@
 ### Highlights
 
 - Improved **Anchor Mobile** interface with *faster load times* and modernized design now available as the default experience
-- Launched **MetaMask Snap** integration enabling MetaMask users to interact with Antelope blockchains *without learning new wallet software*
-- Added **token staking** to Unicove allowing users to earn rewards while providing liquidity to the resource rental market
-- Improved developer tools with *better error messages* showing exactly where problems occur in data structures
+- Started **MetaMask Snap** allowing MetaMask users to sign Antelope transactions without switching wallets
+- Added **REX staking** to Unicove letting users earn rewards by lending their tokens
+- Built **account finder** that searches for your accounts across different blockchains
 
 ### Anchor Mobile
 
-Released 20 updates focused on interface improvements and performance. The updated interface became the default experience, replacing the previous design after extensive testing and refinement.
+Released 20 updates for interface improvements and performance. The updated interface became the default experience, replacing the previous design.
 
-Improved app loading speed through better code organization and removed unnecessary development tools from the production version. Users now experience faster startup times and smoother interactions when managing their accounts and signing transactions.
+Made the app load faster with better code organization and removed development tools from production. Users now experience faster startup times and smoother interactions when managing accounts and signing transactions.
 
-Fixed several issues affecting transaction requests and account operations. The app now responds more reliably when applications request signatures or account information through the wallet connection.
+Fixed several issues affecting transaction requests and account operations. The app now responds more reliably when apps request signatures or account information.
 
 ### MetaMask Integration
 
-Created new tools enabling MetaMask wallet users to access Antelope blockchains. MetaMask users can now sign Antelope transactions without installing separate wallet software or managing additional security credentials.
+Built tools letting MetaMask wallet users access Antelope blockchains. MetaMask users can now sign Antelope transactions without installing separate wallet software or managing additional security credentials.
 
-The integration works by adding Antelope blockchain support directly to MetaMask through a secure extension. This removes a significant barrier for users already familiar with MetaMask who want to explore Antelope applications.
+The integration adds Antelope blockchain support directly to MetaMask through a secure extension. This removes a barrier for users already familiar with MetaMask who want to explore Antelope applications.
 
 ### Unicove
 
-Added token staking features allowing users to lock tokens to earn rewards. Staked tokens provide liquidity to the resource rental market where other users can temporarily rent computing resources.
+Added REX staking so users can earn rewards by lending tokens. Staked tokens let other users rent computing resources temporarily.
 
-Improved resource calculation accuracy for better estimates when users stake or unstake tokens. This helps users make informed decisions about resource allocation and timing.
+Improved resource calculations for better estimates when users stake or unstake tokens. This helps users make informed decisions about staking and timing.
 
 ### Account Lookup Services
 
-Created new tools for discovering which accounts are associated with specific keys across multiple blockchain networks. These services perform fast parallel searches across networks, making it easier for users to find their existing accounts.
+Built tools for finding which accounts are associated with specific keys across multiple blockchains. These services search across networks in parallel, making it easier to find your existing accounts.
 
-Improved reliability by adding protections against slow or unresponsive blockchain nodes. The services now respond consistently even when individual network connections experience delays.
+Improved reliability with protections against slow or unresponsive nodes. The services now respond consistently even when individual network connections are slow.
 
 ### Developer Tools
 
-Improved error messages in core development libraries to show exactly where problems occur within data structures. Instead of generic error messages, developers now see the specific field and location that caused an issue, reducing time spent troubleshooting.
+Improved error messages in core libraries to show exactly where problems occur. Instead of generic errors, developers now see the specific field that caused an issue, reducing troubleshooting time.
 
-Enhanced token amount handling to ensure accurate calculations across all operations involving transfers, staking, and contract interactions.
+Improved token amount handling for accurate calculations across transfers, staking, and contract interactions.
 
 ### Summary
 
-Shipped 30 updates across 8 repositories. June focused on improving user experiences with the Anchor Mobile interface redesign and establishing MetaMask integration to welcome users from other blockchain ecosystems.
+Merged 30 updates across 8 repositories. Improved Anchor Mobile interface with faster load times and modernized design. Started MetaMask Snap allowing MetaMask users to sign Antelope transactions. Added REX staking to Unicove letting users earn rewards. Built account finder searching across blockchains.

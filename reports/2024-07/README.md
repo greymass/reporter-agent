@@ -7,10 +7,10 @@
 
 ### Highlights
 
-- Started building **Unicove 2.0** as *a complete rewrite with modern architecture*
-- Added **REX staking** to **Unicove** *enabling users to earn rewards on token holdings*
-- Created **reusable component library** for *consistent design across applications*
-- Implemented **security protections** across multiple web applications *safeguarding user data*
+- Started building **Unicove 2.0** as a new modern web wallet and block explorer
+- Added **REX staking** to Unicove v1 letting users earn rewards
+- Started **component library** for shared design across Unicove and other apps
+- Started building **account creation infrastructure** supporting multiple providers and wallets
 
 ### Publications
 
@@ -20,28 +20,28 @@ Published ["Shipload (Alpha) on EOS"](https://greymass.medium.com/shipload-alpha
 
 ### Unicove 2.0
 
-Started building the next version of Unicove as a complete rewrite with improved capabilities. Created the project on July 16th alongside a shared component library to enable consistent design patterns. Built transaction management allowing multiple operations to be queued and processed. Added support for connecting to different blockchain networks with network-specific settings.
+Started building the next version of Unicove from scratch. Created the project on July 16th alongside a shared component library for consistent design. Built transaction management so multiple operations can be queued and processed. Added support for connecting to different blockchains with their own settings.
 
-Created notification displays to inform users about transaction results and system events. Developed input controls for token amounts and basic interface elements. These foundational pieces enable rapid development of wallet features.
+Created notification displays for transaction results and system events. Built input controls for token amounts and basic interface elements. These foundation pieces enable faster wallet feature development.
 
-### Unicove
+### Unicove v1
 
-Added REX staking allowing users to earn rewards by staking tokens for blockchain resources. Users can stake and unstake with a setup process for first-time stakers. The system displays matured balances ready for withdrawal and calculates annual percentage yields showing expected earnings.
+Added REX staking so users can earn rewards by lending tokens. Users can stake and unstake with a setup process for first-time stakers. The system shows matured balances ready for withdrawal and calculates yearly earnings percentages.
 
-Improved terminology changing "claim" to "withdraw" for clearer understanding. Fixed calculation issues ensuring accurate balance displays and transaction amounts. Resolved compatibility problems preventing the wallet from launching in Firefox on Android devices.
+Changed "claim" to "withdraw" for clearer wording. Fixed calculation issues for accurate balance displays and transaction amounts. Fixed compatibility problems preventing the wallet from launching in Firefox on Android.
 
 ### Account Creation
 
-Expanded account creation support for multiple service providers, giving users more options when creating new accounts. Added communication capabilities between the creation interface and external services. These improvements provide flexibility for different account creation workflows.
+Started building account creation infrastructure supporting multiple service providers. This gives users more options when creating new accounts. Added communication between the creation interface and external services for flexible account creation workflows.
 
 ### Security Improvements
 
-Added protective headers to three web applications on July 25th preventing common security vulnerabilities. The headers protect against clickjacking attacks, cross-site scripting, content type confusion, and enforce secure connections. This coordinated update improved security across the web application portfolio.
+Added security headers to three web apps on July 25th preventing common vulnerabilities. The headers protect against clickjacking attacks, cross-site scripting, content type confusion, and enforce secure connections. This update improved security across all web apps.
 
 ### Developer Tools
 
-Improved comparison operations for integer types with greater-than, less-than, and equality checks. Enhanced type safety preventing problematic values from causing errors. Fixed data encoding and decoding issues ensuring accurate blockchain data handling. Resolved browser compatibility issues for Firefox and Brave when launching the wallet.
+Improved comparison operations for integer types with greater-than, less-than, and equality checks. Improved type safety preventing bad values from causing errors. Fixed data encoding and decoding issues for accurate blockchain data. Fixed browser compatibility issues for Firefox and Brave when launching the wallet.
 
 ### Summary
 
-Merged 24 updates across 9 repositories. July focused on launching Unicove 2.0 development, implementing REX staking for earning rewards, and coordinating security improvements across web properties.
+Merged 24 updates across 9 repositories. Started building Unicove 2.0 as a new web wallet and block explorer. Added REX staking to Unicove v1 letting users earn rewards. Built component library for shared design. Started building account creation infrastructure supporting multiple providers.

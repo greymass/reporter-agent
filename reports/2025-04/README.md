@@ -7,44 +7,44 @@
 
 ### Highlights
 
-- Added **Token Swap functionality** to **Unicove** *supporting the rebrand by enabling users to swap the rebranded token*
-- Updated **Unicove** with **Vaulta branding** reflecting *the network's evolution and new identity*
-- Created **Resource Provider** service *automatically covering CPU, NET, and RAM requirements for transactions*
-- Added **user dashboard** to **Web Authenticator** providing *centralized account overview and settings management*
-- Improved **Web Authenticator** security with *protected communication ensuring apps can't access accounts without permission*
+- Added **token swaps** to Unicove including swapping to the rebranded token
+- Updated **Unicove** from EOS to Vaulta including all features for the new token
+- Created **Resource Provider** for automatically managing CPU and NET resources for accounts
+- Added **dashboard** to Web Authenticator showing accounts and settings in one place
+- Secured **Web Authenticator messaging** so transactions can only come from apps you're logged into
 
 ### Publications
 
-Published ["Progress Update (April 2025)"](https://greymass.medium.com/progress-update-april-2025-41620e009492) on Medium. The post highlights Unicove 2.0's evolution over nine months including multisig support, onboarding tools, and upcoming token swap features. Also covers developer tool improvements including better wallet configuration handling, token querying fixes, and Anchor Android updates with improved account creation and performance optimizations.
+Published ["Progress Update (April 2025)"](https://greymass.medium.com/progress-update-april-2025-41620e009492) on Medium. The post covers Unicove 2.0's progress over nine months including multisig support, onboarding tools, and token swap features. Also covers developer tool improvements and Anchor Android updates.
 
 ### Unicove
 
-Added Token Swap capability supporting the Vaulta rebrand by allowing users to swap the rebranded token directly within Unicove. Users can exchange tokens through familiar swap interfaces without switching to external applications. This keeps all blockchain operations in one place, making the rebrand transition seamless for users.
+Added token swaps including swapping to the rebranded token. Users can exchange tokens directly in Unicove without switching to external apps. This keeps all blockchain operations in one place.
 
-Updated branding from EOS to Vaulta throughout the interface, reflecting the network's new identity and direction. The update includes proper redirects ensuring bookmarks and search results continue working. Each blockchain now displays its own colors and visual identity, making it immediately clear which network users are connected to.
+Updated branding from EOS to Vaulta throughout the site. The update includes redirects so bookmarks and search results still work. Each blockchain now displays its own colors and visual identity so users can see which network they're connected to.
 
-Added content management system allowing non-developers to publish news and announcements. A homepage carousel now displays important updates, improving communication without requiring code changes for each announcement.
+Added content management system so non-developers can publish news and announcements. A homepage carousel now displays important updates without requiring code changes.
 
 ### Web Authenticator
 
-Added user dashboard providing account overview and settings management in one place. The dashboard makes Web Authenticator more comparable to traditional wallet applications while maintaining its no-download advantage for quick onboarding.
+Added dashboard showing account overview and settings in one place. The dashboard makes Web Authenticator work more like traditional wallet apps while keeping the no-download advantage.
 
-Improved security by protecting communication between Web Authenticator and applications. Apps must now prove their identity before accessing accounts, and transaction requests are protected during delivery. This ensures only legitimate apps can request account access and sign transactions. Added detailed views showing users exactly what they're approving before signing any transaction.
+Secured messaging between Web Authenticator and apps. Transaction requests are encrypted so they can only come from apps you're logged into. This ensures only apps you've connected to can send transactions. Added detailed views showing exactly what you're approving before signing transactions.
 
-Integrated alternative key management option providing users choice in how they secure their accounts. Users can now select between different security approaches based on their preferences and needs.
+Added alternative key management option so users can choose how they secure their accounts. Users can now pick between different security approaches.
 
 ### Anchor Mobile (Android)
 
-Fixed 6 issues improving error messages, network identification, and application stability. Updated network naming to match current branding and improved backup prompts to better encourage users to protect their accounts. Fixed problems that caused unexpected closures during camera access and activity transitions.
+Fixed 6 issues with error messages, network names, and app stability. Updated network naming from EOS to Vaulta and improved backup prompts encouraging users to protect their accounts. Fixed problems that caused the app to close unexpectedly during camera use and screen changes.
 
 ### Anchor Mobile (iOS)
 
-Added account creation integration connecting to shared account creation service. This maintains feature consistency with the Android version enabling iOS users to create accounts through the same streamlined process.
+Connected to shared account creation service. iOS users can now create accounts through the same process as Android users.
 
 ### Resource Provider
 
-Created new service that covers network resource requirements for transactions, simplifying the complex CPU, NET, and RAM requirements. The service either provides resources for free or simplifies them as a transaction fee, removing the burden of resource management from users. This modernizes services previously handled by older systems, making blockchain interactions more accessible by handling resource complexity automatically.
+Created tool for automatically managing CPU and NET resources for accounts. The tool monitors selected accounts and ensures they have enough resources for transactions. This replaces the old eosio-resource-manager with a modern alternative.
 
 ### Summary
 
-Merged 29 updates across 5 repositories in April. Work focused on adding Token Swap capabilities to Unicove, implementing the Vaulta rebrand, advancing Web Authenticator toward production readiness with dashboard and security improvements, and creating modern resource management services. Two new repositories support service development standardization and resource management modernization.
+Merged 29 updates across 5 repositories in April. Added token swaps to Unicove and updated branding from EOS to Vaulta. Added dashboard and secured messaging in Web Authenticator. Created Resource Provider tool for automatically managing transaction resources. Two new repositories created.

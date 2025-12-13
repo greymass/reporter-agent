@@ -7,7 +7,7 @@
 
 ### Highlights
 
-- Launched **Web Authenticator** on Jungle 4 testnet to begin testing wallet features
+- Released **Web Authenticator** on Jungle 4 testnet to begin testing wallet features
 - Integrated **account creation** giving users free and paid options to create blockchain accounts
 - Improved **authentication and error handling** with passkey fixes, clearer messages, and fallback login
 - Built **token platform** with registry and tools letting anyone create tokens without writing code

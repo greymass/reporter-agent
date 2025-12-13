@@ -7,11 +7,10 @@
 
 ### Highlights
 
-- Shipped **26 updates to Unicove** focused on *user interface refinements and resource management improvements*
-- Improved **account overview pages** with better display of *balances, staking, and resource information*
-- Enhanced **search functionality** with *history tracking and keyboard navigation* for faster account lookups
-- Fixed **resource pricing calculations** for NET and CPU across *powerup, REX, and staking methods*
-- Completed **security audit remediations** for the Antelope Snap MetaMask integration
+- Added **account overview pages** showing balances, staking, and resources in one place
+- Improved **search** with history and keyboard shortcuts for faster lookups
+- Improved **Unicove homepage** and added **token prices** with historical charts
+- Completed **security audit** for MetaMask Snap improving data security
 
 ### Publications
 
@@ -19,30 +18,30 @@ Published ["Progress Update (October 2024)"](https://greymass.medium.com/progres
 
 ### Unicove
 
-Focused heavily on interface polish and resource management accuracy. The application received comprehensive updates to improve how users interact with blockchain resources like RAM, NET, and CPU.
+Improved interface and resource management. The app got many updates for how users interact with resources like RAM, NET, and CPU.
 
-Account overview pages were added to give users a clearer picture of their holdings, including liquid balances, staked resources, and available bandwidth. The resource management interface was improved to present information more clearly and calculate prices accurately across different rental methods.
+Added account overview pages showing your holdings including liquid balances, staked resources, and available bandwidth. Resource pages show information more clearly and calculate prices accurately across different rental methods.
 
-Search improvements made finding accounts faster and more convenient. The search dialog now remembers recent searches and allows navigation with keyboard shortcuts, reducing the friction of looking up multiple accounts in a session. Error pages were added so users can still navigate the application even when searches fail.
+Improved search making it faster and easier to find accounts. Search now remembers recent searches and lets you navigate with keyboard shortcuts. Added error pages so you can still navigate when searches fail.
 
-### Resource Pricing Accuracy
+### Resource Pricing
 
-Fixed calculations for resource rental pricing across multiple methods. The powerup system, REX rental market, and traditional staking now display accurate costs per kilobyte of NET and CPU resources. This helps users make informed decisions about which method best suits their needs and budget.
+Fixed resource rental pricing calculations. Powerup, REX rental market, and staking now show accurate costs per kilobyte of NET and CPU. This helps users decide which method fits their needs and budget.
 
-The fixes addressed issues where prices were incorrectly calculated or displayed as zero in certain unit conversions. Users can now reliably compare costs between renting resources temporarily through powerup (0.0001 EOS per KB), using the REX market (0.00004 EOS per KB), or staking tokens long-term (0.0528 EOS per KB).
+Fixed issues where prices were wrong or showed zero. Users can now compare costs between renting temporarily through powerup (0.0001 EOS per KB), using REX market (0.00004 EOS per KB), or staking long-term (0.0528 EOS per KB).
 
 ### Antelope Snap
 
-Completed security audit remediation work for the MetaMask Snap integration. Removed console logging that could potentially leak sensitive information and added data sanitization for transaction information. These improvements protect users by ensuring their transaction data and account information remain secure when using MetaMask to interact with Antelope blockchains.
+Completed security audit for the MetaMask Snap integration. Removed console logging that could leak sensitive information and added data sanitization for transactions. These improvements protect users by keeping their transaction data and account information secure when using MetaMask.
 
 ### Wharfkit
 
-Released updates to the resources library that improve REX price calculations for NET and CPU. Fixed a bug where the price calculation method was calling itself recursively instead of performing the correct calculation. Added documentation about the asset quantity property to help developers properly render token amounts.
+Updated resources library with better REX price calculations for NET and CPU. Fixed a bug where the price calculation was broken. Added documentation about asset quantities to help developers display token amounts correctly.
 
 ### Unicove API
 
-Created the Unicove API to provide data services for Unicove including price history charts and current token prices. This dedicated service enhances the wallet's ability to display market information to users.
+Created the Unicove API for price history charts and current token prices. This service lets Unicove display market information to users.
 
 ### Summary
 
-Merged 35 updates across 6 repositories. October focused on Unicove interface improvements, resource management accuracy, and security enhancements for the MetaMask integration.
+Merged 35 updates across 6 repositories. Added account overview pages, improved search, built Unicove homepage, and created API for token prices. Fixed resource pricing and completed security audit for MetaMask Snap.

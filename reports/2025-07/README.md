@@ -10,7 +10,7 @@
 - Added **new design** to Web Authenticator across login, account creation, and transaction signing
 - Completed **Ledger hardware wallet** pages in Web Authenticator for using hardware keys
 - Added **Ricardian contracts** to Web Authenticator showing human-readable transaction terms
-- Added **Spring 2.0 testnet** support and **component library** to Unicove
+- Added **Spring 2.0 testnet** support and **migrated to shared component library** in Unicove
 
 ### Web Authenticator
 

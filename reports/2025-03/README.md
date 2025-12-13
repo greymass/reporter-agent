@@ -7,34 +7,34 @@
 
 ### Highlights
 
-- Enabled **crowd-sourced translations** in **Unicove** *allowing non-coders to contribute language support easily*
-- Modernized **Unicove** design for *better performance and smaller application size*
-- Enabled **single-network deployment** of **Unicove** for *focused blockchain-specific installations*
-- Fixed **13 stability issues** in **Anchor Mobile (Android)** improving *reliability on older devices*
-- Added **production error tracking** to **Anchor Mobile (Android)** for *faster issue identification and fixes*
+- Added **translation tools** to Unicove so anyone can help translate without coding
+- Upgraded **Unicove styling** for faster loading and smaller size
+- Refactored **token system** in Unicove to support multiple tokens and swaps
+- Improved **permissions interface** in Unicove making group account management easier
+- Fixed **Anchor Mobile (Android)** crashes on older devices and added crash reporting
 
 ### Unicove
 
-Integrated tools allowing community members to contribute translations without coding knowledge. The system enables anyone to help translate Unicove into their language through simple web-based tools, removing technical barriers to contribution. This makes it easier for global communities to provide and improve translations ensuring accuracy across languages.
+Added translation tools so community members can help translate without coding knowledge. Anyone can help translate Unicove into their language through simple web-based tools. This makes it easier for global communities to translate and improve accuracy.
 
-Modernized the design improving application performance and reducing size. Updated the interface foundation bringing faster loading and better responsiveness. Enabled focused deployment mode allowing Unicove installations to serve single blockchains rather than multiple networks, simplifying the interface for dedicated use cases.
+Upgraded styling making the app faster and smaller. Updated the design foundation for faster loading and better responsiveness. Also added option to deploy Unicove for single blockchains instead of multiple networks.
 
-Refactored how tokens are handled throughout the application preparing for an upcoming rebrand. This foundational work ensures token-related features will work correctly after the rebrand while making future token management features easier to build.
+Rebuilt how tokens work throughout the app preparing for rebrand and token swaps. This work ensures token features work correctly after the rebrand and makes adding token swaps easier.
 
-Released 15 updates throughout March refining the permissions interface, streamlining navigation, and improving displays. These updates build on [February's multisig features](../2025-02/README.md) making group account management more intuitive.
+Released 15 updates improving the permissions interface, navigation, and displays. These updates build on [February's multisig features](../2025-02/README.md) making group account management easier.
 
 ### Anchor Mobile (Android)
 
-Fixed 13 issues affecting reliability and compatibility, particularly on older Android versions. Resolved problems where certain devices couldn't create accounts due to security feature incompatibility. The app now detects device capabilities before attempting account setup, preventing errors on Android 10 and earlier versions.
+Fixed 13 crashes and bugs, especially on older Android versions. Fixed problems where certain devices couldn't create accounts. The app now checks device capabilities before account setup, preventing crashes on Android 10 and earlier.
 
-Added error tracking system providing visibility into problems occurring in production. When issues happen, the system captures detailed information enabling faster identification and resolution. This helps maintain app quality by catching problems that only appear in real-world usage across different device types.
+Added crash reporting system to track problems in production. When crashes happen, the system captures detailed information for faster fixes. This helps maintain app quality by catching problems that only appear on real devices.
 
-Improved interface responsiveness and fixed navigation issues. Enhanced error handling throughout the app preventing unexpected behavior when operations fail.
+Improved interface responsiveness and fixed navigation issues. Improved error handling throughout the app to prevent unexpected crashes.
 
 ### Web Authenticator
 
-Improved code organization making transaction signing easier to maintain and extend. This simplifies adding new signing methods while keeping existing functionality working.
+Reorganized transaction signing code making it easier to maintain and add new features. This makes adding new signing methods simpler while keeping existing features working.
 
 ### Summary
 
-Merged 29 updates across 3 repositories in March. Work focused on enabling global accessibility through multi-language support in Unicove, modernizing tools and systems, and improving mobile wallet reliability. These improvements prepare Unicove for international expansion while maintaining quality across mobile platforms.
+Merged 29 updates across 3 repositories in March. Added translation tools, upgraded styling, rebuilt token system, and improved permissions interface in Unicove. Fixed crashes on older Android devices and added crash reporting to Anchor Mobile. Reorganized Web Authenticator transaction signing code.
