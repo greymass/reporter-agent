@@ -7,40 +7,40 @@
 
 ### Highlights
 
-- Started development on **Sextant v2** *rebuilding account creation infrastructure powering multiple products*
-- Added **transaction signing** to **Web Authenticator** *advancing toward complete wallet functionality*
-- Added **Apple login** to **Web Authenticator** *providing familiar authentication option for iOS users*
-- Improved **Web Authenticator security** with *redirect verification and identity proofs protecting against unauthorized access*
-- Established **WebAuthn cryptographic support** across **WharfKit libraries** *enabling secure passwordless authentication throughout the ecosystem*
+- Started building **Sextant v2** for account creation across multiple products
+- Added **transaction signing** to Web Authenticator so users can approve blockchain actions
+- Added **Apple login** to Web Authenticator for claiming free accounts
+- Restructured **Web Authenticator data storage** for better maintainability
+- Added **WebAuthn support** to WharfKit libraries for passwordless authentication
 
 ### Web Authenticator
 
-Continued development with transaction signing capability, Apple login integration, and security improvements. Transaction signing allows users to approve blockchain actions directly in the browser. Apple login provides a familiar authentication option for iOS users.
+Added transaction signing so users can approve blockchain actions directly in the browser. Added Apple login for claiming free accounts. Improved security with redirect verification and identity proofs so apps can verify account ownership.
 
-Strengthened security with redirect verification and identity proofs enabling applications to verify account ownership. Improved account creation workflows with better error reporting and navigation. Fixed routing issues that previously blocked access to account details and backup features.
+Improved account creation with better error messages and navigation. Fixed routing bugs that blocked access to account details and backup features.
 
-Modernized infrastructure including database handling and configuration management. Added support for browser and server usage, expanding integration possibilities. Migrated to shared WebAuthn library reducing code duplication.
+Restructured database handling and configuration management. Switched to shared WebAuthn library so multiple projects can use the same code.
 
-Started development on Sextant v2, a next-generation account creation platform. This shared service will power account creation across multiple products including Web Authenticator, Anchor, MetaMask Snap, and Unicove.
+Started building Sextant v2 for account creation. This shared service will handle account creation for Web Authenticator, Anchor, MetaMask Snap, and Unicove.
 
 ### Unicove
 
-Shipped browser compatibility improvements ensuring consistent experience across Safari and other browsers. Fixed layout issues that affected mobile viewing, improving readability on phones and tablets. Mobile styling ensures critical transaction and action information displays correctly regardless of device.
+Fixed browser compatibility issues so Safari and other browsers work consistently. Fixed layout problems on mobile devices improving readability on phones and tablets. Mobile styling now shows transaction and action information correctly on all devices.
 
-Updated visual elements including homepage imagery for better performance. Replaced gradient backgrounds with high-quality images that load smoothly. Updated testnet token logos helping developers identify tokens more easily.
+Updated homepage images for better performance. Replaced gradient backgrounds with high-quality images that load smoothly. Updated testnet token logos so developers can identify tokens more easily.
 
 ### Anchor Mobile (Android)
 
-Continued stability improvements addressing reliability issues. Fixed crashes caused by animation errors. Improved release process ensuring updates deploy smoothly. These maintenance updates keep the application reliable for existing users.
+Fixed stability and reliability issues. Fixed crashes caused by animation errors. Improved release process so updates deploy smoothly. These maintenance updates keep the app reliable for existing users.
 
-Completed major modernization of account recovery features, updating outdated code to current standards. This update improves maintainability and establishes a stronger foundation for ongoing recovery support.
+Finished modernizing account recovery features, updating old code to current standards. This improves maintainability and creates a stronger foundation for ongoing recovery support.
 
 ### WharfKit Core Libraries
 
-Established WebAuthn cryptographic support enabling passwordless authentication throughout the ecosystem. Added signature verification allowing validation of WebAuthn-based wallet signatures. This foundation enables Web Authenticator and other WebAuthn wallets to work within the broader ecosystem.
+Added WebAuthn support for passwordless authentication. Added signature verification so WebAuthn-based wallet signatures can be validated. This lets Web Authenticator and other WebAuthn wallets work with the rest of the ecosystem.
 
-Added key validation preventing crashes from invalid inputs and fixed security issues in key handling. Enhanced public key recovery and verification. Improved smart contract compatibility.
+Added key validation to prevent crashes from invalid inputs and fixed security issues in key handling. Improved public key recovery and verification. Improved smart contract compatibility.
 
 ### Summary
 
-Merged 29 updates across 5 repositories. June continued Web Authenticator development with authentication, transaction signing, security improvements, and service enhancements. Started development on Sextant v2, the next-generation account creation platform powering multiple products. Coordinated work across WharfKit libraries established WebAuthn support enabling secure passwordless wallet experiences. Unicove received polish and compatibility refinements after May's major features. Anchor Android modernization prepared for continued reliable operation.
+Merged 29 updates across 5 repositories. June added transaction signing, Apple login, and restructured data storage in Web Authenticator. Started building Sextant v2 for account creation across multiple products. Added WebAuthn support to WharfKit libraries for passwordless authentication. Fixed Unicove browser compatibility and mobile styling. Modernized Anchor Android account recovery code.

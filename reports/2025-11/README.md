@@ -1,16 +1,17 @@
 # Greymass Team Activity Report
 ## November 2025
 
-**Navigation**: [← Previous Month](../2025-10/README.md)
+**Navigation**: [← Previous Month](../2025-10/README.md) | [Next Month →](../2025-12/README.md)
 
 *Also available: [Technical Report](technical.md) | [Research Data](research.md)*
 
 ### Highlights
 
-- Launched sentiment polling allowing token holders to share weighted opinions on community topics
-- Built complete proposal platform with search engine to support governance transition
-- Improved Web Authenticator signing experience to reduce user confusion during onboarding
-- Restored bridge access for token holders affected by service shutdown
+- Launched **sentiment polling** allowing token holders to share weighted opinions on community topics
+- Built **proposal browser** letting anyone search and review governance votes
+- Made **Web Authenticator** show clearer information when asking users to approve transactions
+- Reopened **token bridge** so people can withdraw their funds after Vaulta EVM shut down
+- Added **multi-language support** to Unicove using Wuchale translation system
 
 ### Publications
 
@@ -40,9 +41,9 @@ Updated session management with better visual consistency and added branding ele
 
 ### Unicove
 
-Added support for additional wallet connections. Prototyped multi-language capabilities to explore serving international users. Improved proposal pages with better organization and navigation.
+Added sentiment voting letting token holders share opinions on community topics. Improved proposal pages with better organization and navigation to help users review governance votes more easily.
 
-Sentiment voting integration positions Unicove as a platform for community opinion polling.
+Launched Wuchale translation system to make managing multiple languages easier. Added GateWallet support giving users more wallet choices.
 
 ### Bridge Access Recovery
 
@@ -56,4 +57,4 @@ Updated component library with improvements and enhanced documentation examples 
 
 ### Summary
 
-Deployed 4 new projects and merged 4 updates in November. Work focused on governance tools, community sentiment polling, and protecting user access following foundation shutdown. These efforts enable transparent proposal platforms and community opinion visibility.
+Launched 4 new projects and merged 4 updates in November. Built governance tools and sentiment voting to help the community after the foundation shutdown. Added translations to Unicove and reopened the bridge for withdrawals.

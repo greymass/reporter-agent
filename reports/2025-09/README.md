@@ -7,33 +7,33 @@
 
 ### Highlights
 
-- Improved **Web Authenticator** speed and stability by *reorganizing how the wallet manages information on testnet*
-- Simplified **account creation** and **import flows** *making wallet setup faster and easier for new users on Jungle 4*
-- Connected **Web Authenticator** with **Unicove** block explorer *enabling seamless navigation between wallet and blockchain search*
-- Prototyped **backup extension** for **Web Authenticator** *exploring secure recovery phrase backup through isolated browser extension*
-- Expanded **WharfKit** wallet support with **Gate Wallet plugin** *increasing user choice and ecosystem accessibility*
+- Made **Web Authenticator** faster and more stable by improving how it stores wallet information
+- Simplified **account creation** and **import** making wallet setup faster and easier
+- Connected **Web Authenticator** with **Unicove** so you can use the wallet for sending tokens and staking
+- Started building **backup extension** for Web Authenticator to test 12-word recovery phrases
+- Created **Gate Wallet plugin** for WharfKit expanding wallet integration options
 
 ### Web Authenticator
 
-Continued Web Authenticator development on Jungle 4 testnet following [August's development work](../2025-08/README.md). Reorganized how the wallet manages information improving speed and stability. Simplified account creation and import flows making setup faster. Connected with Unicove block explorer enabling direct navigation to view transaction details and blockchain data.
+Continued Web Authenticator development on Jungle 4 testnet following [August's development work](../2025-08/README.md). Improved how the wallet stores information making it faster and more stable. Simplified account creation and import making setup faster. Connected with Unicove so you can use the wallet for sending tokens and staking.
 
 Enhanced visual design improving clarity across settings and error pages. Added browser compatibility detection to hide unsupported features preventing confusion.
 
-### Backup Extension Prototype
+### Backup Extension
 
-Prototyped browser extension exploring secure recovery phrase backup. The experimental extension generates 12-word recovery phrases to test an alternative backup method beyond QR codes and cloud storage. Extension keeps sensitive recovery phrase handling separate from the main wallet application. Multiple backup prototypes help determine which approaches work best before release.
+Started building browser extension for 12-word recovery phrases. The extension tests a new backup method separate from QR codes and cloud storage. Extension keeps sensitive recovery phrase handling separate from the main wallet application. Testing different backup methods helps find the best approach.
 
 ### Unicove
 
-Released regular updates with improvements and bug fixes for testnet. Added support for pending transactions enabling users to see transactions before they become final.
+Released regular updates with improvements and bug fixes for testnet. Added support for pending transactions so users can see transactions before they become final.
 
 ### WharfKit Ecosystem
 
-Expanded wallet plugin ecosystem with Gate Wallet support enabling more user choice for blockchain interactions. Additional wallet options increase accessibility and allow users to select their preferred authentication method. Plugin diversity benefits the entire ecosystem by reducing dependence on any single wallet provider.
+Created Gate Wallet plugin for WharfKit giving users more wallet choices. Additional wallet options let users pick their preferred way to sign transactions. More plugin options help the ecosystem by reducing dependence on any single wallet.
 
-Fixed translation support ensuring proper multi-language display across wallet plugins. Users can now interact with wallet interfaces in their preferred language rather than being forced into English. This fix enables global adoption as non-English speakers can use products in their native language.
+Fixed translation support so wallet plugins display properly in different languages. Users can now interact with wallet interfaces in their preferred language instead of only English. This lets non-English speakers use products in their native language.
 
-Improved resource calculation accuracy through better math. The updated calculations prevent transaction failures from incorrect resource estimates. Better resource management reduces failed transactions and improves user experience.
+Improved resource calculations with better math. The updated calculations prevent transaction failures from incorrect resource estimates. Better calculations mean fewer failed transactions.
 
 ### Smart Contract Improvements
 
@@ -41,4 +41,4 @@ Improved smart contracts to retrieve information for multiple accounts at once i
 
 ### Summary
 
-Merged 34 updates across 6 repositories. September focused on refining Web Authenticator's testnet development through code improvements, simplified onboarding, and ecosystem integration with Unicove. The backup extension prototype explores additional recovery options while Gate Wallet plugin expands user choice. Work emphasized quality and integration continuing the ongoing development effort.
+Merged 34 updates across 6 repositories. September focused on improving Web Authenticator on testnet with faster performance, simpler account setup, and connection to Unicove. Started building backup extension for recovery phrases and created Gate Wallet plugin for more wallet choices.

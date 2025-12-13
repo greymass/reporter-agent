@@ -12,7 +12,7 @@
 - Added **contract deployment tools** to **Unicove** *enabling developers to upload smart contracts through graphical interface*
 - Improved **transaction readability** in **Unicove** with *human-readable action summaries making blockchain operations understandable*
 - Prototyped **mnemonic recovery** for **Web Authenticator** *exploring account restoration with 12-word backup phrases*
-- Added **hardware wallet support** to **Web Authenticator** *integrating Ledger devices for enhanced security*
+- Started **Ledger hardware wallet** integration in Web Authenticator for enhanced security
 
 ### Publications
 
@@ -36,7 +36,7 @@ Redesigned homepage hero section with updated visual treatment and improved mess
 
 Prototyped mnemonic phrase recovery exploring account restoration using 12-word backup sequences. The prototype tests how users can write down recovery phrases and use them to restore accounts on new devices or after data loss. This experiments with a familiar recovery method alongside device-based authentication before determining the final approach.
 
-Added hardware wallet support through integration with Ledger devices. Users can now combine the convenience of Web Authenticator with the security of hardware wallets. Support includes multiple connection methods for desktop and mobile devices, providing maximum security options for users managing high-value accounts.
+Started integrating Ledger hardware wallet support. The integration will let users combine Web Authenticator's convenience with hardware wallet security. Working on connection methods for desktop and mobile devices to provide maximum security for users managing high-value accounts.
 
 Fixed several reliability issues including authentication setup and backup detection. Development environment now supports secure local testing, improving the experience for contributors working on new features.
 
