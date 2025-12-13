@@ -2,8 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { extractHighlights } from '../utils/extractHighlights';
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
 
 // Get all reports and sort by date (newest first)
 const allReports = await getCollection('docs');
@@ -41,36 +39,19 @@ function getMonthYear(id: string) {
 }
 
 // Prepare timeline data with highlights
-const timelineReports = await Promise.all(
-  summaryReports.map(async (report) => {
-    let highlights: string[] = [];
-    
-    try {
-      // Content collection IDs don't include the base path
-      // report.id looks like "2025-11/README.md"
-      const filePath = join(process.cwd(), 'reports', report.id);
-      const markdown = await readFile(filePath, 'utf-8');
-      highlights = extractHighlights(markdown);
-    } catch (e) {
-      // Try without .md extension
-      try {
-        const filePathAlt = join(process.cwd(), 'reports', report.id.replace(/\.md$/i, '') + '.md');
-        const markdown = await readFile(filePathAlt, 'utf-8');
-        highlights = extractHighlights(markdown);
-      } catch (e2) {
-        console.warn(`Could not read highlights for ${report.id}`, e);
-      }
-    }
-    
-    return {
-      id: report.id,
-      slug: getReportSlug(report.id),
-      title: getReportTitle(report.id),
-      monthYear: getMonthYear(report.id),
-      highlights
-    };
-  })
-);
+const timelineReports = summaryReports.map((report) => {
+  // Use the report body directly from content collection
+  const markdown = report.body || '';
+  const highlights = extractHighlights(markdown);
+  
+  return {
+    id: report.id,
+    slug: getReportSlug(report.id),
+    title: getReportTitle(report.id),
+    monthYear: getMonthYear(report.id),
+    highlights
+  };
+});
 ---
 
 <BaseLayout title="Greymass Reporter" description="Development activity reports for Greymass and WharfKit projects">
