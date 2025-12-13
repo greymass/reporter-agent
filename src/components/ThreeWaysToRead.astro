@@ -1,0 +1,48 @@
+---
+interface Props {
+  latestReportSlug: string;
+}
+
+const { latestReportSlug } = Astro.props;
+---
+
+<div class="py-16">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-3xl font-bold text-center mb-4">Three Ways to Read</h2>
+    <p class="text-center text-base-content/70 mb-12 max-w-2xl mx-auto">
+      Choose the format that works best for you. Stakeholders get the highlights, developers get the details, and everyone can verify the source data.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card bg-base-100 shadow-lg border-t-4 border-primary">
+        <div class="card-body">
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="card-title text-lg">Executive Summaries</h3>
+          <p class="text-sm mb-4">High-level overviews for stakeholders and community</p>
+          <div class="card-actions justify-end">
+            <a href={`/reports/${latestReportSlug}/readme/`} class="btn btn-sm btn-primary">Read Latest</a>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-lg border-t-4 border-cyan-500">
+        <div class="card-body">
+          <div class="text-4xl mb-4">⚙️</div>
+          <h3 class="card-title text-lg">Technical Reports</h3>
+          <p class="text-sm mb-4">Detailed documentation for developers and contributors</p>
+          <div class="card-actions justify-end">
+            <a href={`/reports/${latestReportSlug}/technical/`} class="btn btn-sm btn-outline btn-primary">Read Latest</a>
+          </div>
+        </div>
+      </div>
+      <div class="card bg-base-100 shadow-lg border-t-4 border-emerald-500">
+        <div class="card-body">
+          <div class="text-4xl mb-4">🔍</div>
+          <h3 class="card-title text-lg">Research Data</h3>
+          <p class="text-sm mb-4">Complete raw data for verification and analysis</p>
+          <div class="card-actions justify-end">
+            <a href={`/reports/${latestReportSlug}/research/`} class="btn btn-sm btn-outline btn-primary">Read Latest</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

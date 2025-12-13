@@ -8,18 +8,20 @@ interface Props {
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  latestReportSlug?: string;
 }
 
 const { 
   title, 
-  description = 'Development activity reports for Greymass and WharfKit projects',
+  description = 'Monthly reports documenting open-source development across Greymass and WharfKit blockchain infrastructure projects',
   image = '/og-image.png',
-  type = 'website'
+  type = 'website',
+  latestReportSlug = '2025-11'
 } = Astro.props;
 
-const siteUrl = 'https://reporter.greymass.io';
+const siteUrl = 'https://reports.greymass.io';
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
-const fullTitle = title.includes('Reporter') ? title : `${title} - Greymass Reporter`;
+const fullTitle = title.includes('Greymass') ? title : `${title} - Greymass Progress Reports`;
 const socialImage = new URL(image, siteUrl).href;
 ---
 
@@ -50,7 +52,7 @@ const socialImage = new URL(image, siteUrl).href;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={socialImage} />
-    <meta property="og:site_name" content="Greymass Reporter" />
+    <meta property="og:site_name" content="Greymass Progress Reports" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -70,9 +72,9 @@ const socialImage = new URL(image, siteUrl).href;
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Greymass Reporter",
+      "name": "Greymass Progress Reports",
       "url": siteUrl,
-      "description": "Development activity reports for Greymass and WharfKit projects",
+      "description": "Monthly reports documenting open-source development across Greymass and WharfKit blockchain infrastructure projects",
       "publisher": {
         "@type": "Organization",
         "name": "Greymass",
@@ -85,10 +87,12 @@ const socialImage = new URL(image, siteUrl).href;
     })} />
   </head>
   <body class="min-h-screen flex flex-col">
-    <Header />
-    <main class="flex-1">
-      <slot />
-    </main>
-    <Footer />
+    <Header latestReportSlug={latestReportSlug} />
+    <div class="pt-16">
+      <main class="flex-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>

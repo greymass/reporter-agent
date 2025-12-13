@@ -1,0 +1,24 @@
+{
+  "updated": "2025-12-13T05:47:06Z",
+  "organizations": {
+    "greymass": {
+      "name": "Greymass",
+      "repositories": 122,
+      "followers": 183,
+      "activeRepos30d": 11,
+      "url": "https://github.com/greymass"
+    },
+    "wharfkit": {
+      "name": "WharfKit",
+      "repositories": 70,
+      "followers": 88,
+      "activeRepos30d": 6,
+      "url": "https://github.com/wharfkit"
+    }
+  },
+  "totals": {
+    "repositories": 192,
+    "followers": 271,
+    "activeRepos30d": 17
+  }
+}

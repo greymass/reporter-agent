@@ -1,0 +1,121 @@
+---
+/**
+ * GitHubStats component
+ * Displays organization statistics from GitHub
+ * 
+ * Run `./scripts/count-repos.sh` to update data
+ */
+import github from '../data/github.json';
+
+const { totals, organizations, updated } = github;
+const lastUpdated = new Date(updated).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric'
+});
+---
+
+<section class="github-stats">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-number">{totals.repositories}</span>
+      <span class="stat-label">Public Repositories</span>
+      <span class="stat-detail">
+        {organizations.greymass.repositories} Greymass + {organizations.wharfkit.repositories} WharfKit
+      </span>
+    </div>
+    
+    <div class="stat-card">
+      <span class="stat-number">{totals.followers}</span>
+      <span class="stat-label">Community Followers</span>
+      <span class="stat-detail">
+        {organizations.greymass.followers} + {organizations.wharfkit.followers}
+      </span>
+    </div>
+    
+    <div class="stat-card">
+      <span class="stat-number">{totals.activeRepos30d}</span>
+      <span class="stat-label">Active Projects (30d)</span>
+      <span class="stat-detail">
+        {organizations.greymass.activeRepos30d} + {organizations.wharfkit.activeRepos30d}
+      </span>
+    </div>
+  </div>
+  
+  <div class="org-links">
+    <a href={organizations.greymass.url} target="_blank" rel="noopener noreferrer">
+      → {organizations.greymass.name}
+    </a>
+    <a href={organizations.wharfkit.url} target="_blank" rel="noopener noreferrer">
+      → {organizations.wharfkit.name}
+    </a>
+  </div>
+  
+  <p class="updated">Stats updated {lastUpdated}</p>
+</section>
+
+<style>
+  .github-stats {
+    margin: 2rem 0;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: var(--sl-color-bg-nav);
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--sl-color-text-accent);
+    line-height: 1;
+  }
+  
+  .stat-label {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--sl-color-gray-2);
+  }
+  
+  .stat-detail {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+  }
+  
+  .org-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .org-links a {
+    color: var(--sl-color-text-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .org-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .updated {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>

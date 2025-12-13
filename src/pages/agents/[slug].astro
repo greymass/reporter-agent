@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  return [
+    { params: { slug: 'director' } },
+    { params: { slug: 'researcher' } },
+    { params: { slug: 'summary' } },
+    { params: { slug: 'technical' } },
+    { params: { slug: 'report-fixer' } },
+  ];
+}
+
+const { slug } = Astro.params;
+
+// Map slugs to actual file names
+const fileMap: Record<string, string> = {
+  'director': '../agent.md',
+  'researcher': 'researcher.md',
+  'summary': 'summary.md',
+  'technical': 'technical.md',
+  'report-fixer': 'report-fixer.md',
+};
+
+const fileName = fileMap[slug as string];
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const agentFilePath = fileName === '../agent.md' 
+  ? path.join(__dirname, '../../../agent.md')
+  : path.join(__dirname, '../../../agents', fileName);
+
+let agentContent = '';
+let agentTitle = '';
+
+try {
+  agentContent = await readFile(agentFilePath, 'utf-8');
+  // Extract title from slug
+  const titleMap: Record<string, string> = {
+    'director': 'Report Director Agent',
+    'researcher': 'Researcher Agent',
+    'summary': 'Summary Writer Agent',
+    'technical': 'Technical Writer Agent',
+    'report-fixer': 'Report Fixer Agent',
+  };
+  agentTitle = titleMap[slug as string] || 'Agent';
+} catch (error) {
+  agentContent = 'Agent file not found.';
+}
+
+// Agent navigation data
+const agents = [
+  { slug: 'director', name: 'Report Director', color: 'indigo' },
+  { slug: 'researcher', name: 'Researcher', color: 'emerald' },
+  { slug: 'summary', name: 'Summary Writer', color: 'purple' },
+  { slug: 'technical', name: 'Technical Writer', color: 'cyan' },
+  { slug: 'report-fixer', name: 'Report Fixer', color: 'amber' },
+];
+---
+
+<BaseLayout title={`${agentTitle} Instructions`} description={`View the raw instructions for the ${agentTitle} that generates monthly progress reports`}>
+  <div class="container mx-auto px-4 py-12 max-w-5xl">
+    <div class="mb-8">
+      <a href="/" class="btn btn-ghost btn-sm mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Home
+      </a>
+      <h1 class="text-4xl font-bold mb-2">{agentTitle}</h1>
+      <p class="text-base-content/70">Raw instruction file that defines this agent's behavior and responsibilities</p>
+    </div>
+
+    <!-- Agent Navigation -->
+    <div class="flex flex-wrap gap-2 mb-6 justify-center">
+      {agents.map(agent => (
+        <a 
+          href={`/agents/${agent.slug}`}
+          class={`btn btn-sm ${slug === agent.slug ? 'btn-primary' : 'btn-outline'}`}
+        >
+          {agent.name}
+        </a>
+      ))}
+    </div>
+
+    <div class="bg-base-200 rounded-lg p-6 mb-6">
+      <div class="flex items-start gap-3 text-sm text-base-content/70">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-info flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div>
+          <p class="mb-2">This is the actual instruction file used to configure the AI agent. It defines the agent's role, responsibilities, writing style, and operational guidelines.</p>
+          <p class="mb-0">These instructions are open-source and can be viewed, modified, or used to create your own agent-based reporting system.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body p-0">
+        <pre class="overflow-x-auto p-6 text-sm leading-relaxed bg-slate-900 text-gray-100 rounded-lg whitespace-pre-wrap break-words"><code>{agentContent}</code></pre>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <a href="https://github.com/greymass/reporter/tree/main/agents" target="_blank" rel="noopener" class="btn btn-outline btn-primary">
+        View All Agent Files on GitHub
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</BaseLayout>

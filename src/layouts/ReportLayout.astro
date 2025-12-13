@@ -22,10 +22,10 @@ const monthName = new Date(parseInt(year), parseInt(monthNum) - 1).toLocaleDateS
 
 // Generate description based on report type
 const defaultDescription = reportType.toLowerCase() === 'readme' 
-  ? `Executive summary of Greymass development activity for ${monthName}`
+  ? `Monthly development report for ${monthName} covering Greymass and WharfKit open-source projects`
   : reportType.toLowerCase() === 'technical'
-  ? `Technical details of development work completed during ${monthName}`
-  : `Research data and metrics for ${monthName}`;
+  ? `Technical documentation of development activity during ${monthName} across blockchain infrastructure projects`
+  : `Research data and development metrics for ${monthName}`;
 
 const finalDescription = description || defaultDescription;
 ---

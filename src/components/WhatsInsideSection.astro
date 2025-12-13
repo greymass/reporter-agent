@@ -1,0 +1,21 @@
+---
+interface Props {
+  githubStats: any;
+}
+
+const { githubStats } = Astro.props;
+---
+
+<div id="about-reports" class="bg-base-200 py-16">
+  <div class="container mx-auto px-4 max-w-4xl">
+    <h2 class="text-3xl font-bold text-center mb-4">About These Reports</h2>
+    <p class="text-center text-base-content/70 mb-8 max-w-2xl mx-auto">
+      A monthly look at what Greymass built and shipped.
+    </p>
+    <div class="prose prose-lg max-w-none text-left bg-base-100 rounded-2xl p-8 shadow-lg">
+      <p class="mb-0">
+        Each month we document activity across all Greymass projects. This includes core products like <a href="https://github.com/greymass/unicove" target="_blank" rel="noopener">Unicove</a>, <a href="https://github.com/greymass/web-authenticator" target="_blank" rel="noopener">Web Authenticator</a>, and <a href="https://github.com/wharfkit" target="_blank" rel="noopener">WharfKit</a>, plus the supporting tools and infrastructure that power them. Every report shows what was completed and what's currently in progress.
+      </p>
+    </div>
+  </div>
+</div>

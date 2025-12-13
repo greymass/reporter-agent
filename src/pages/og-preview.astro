@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { readFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ogImagePath = path.join(__dirname, '../../public/og-image.svg');
+const currentSvg = await readFile(ogImagePath, 'utf-8');
+---
+
+<BaseLayout title="OG Image Preview" description="Preview the Open Graph image used for social media sharing">
+  <div class="container mx-auto px-4 py-12 max-w-7xl">
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold mb-2">OG Image Preview</h1>
+      <p class="text-base-content/70">Preview the Open Graph card for social media sharing. This image appears when the site is shared on Twitter, LinkedIn, Facebook, etc.</p>
+    </div>
+
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title text-xl mb-2">Current OG Image</h2>
+        <p class="text-sm text-base-content/70 mb-4">Dark purple theme matching the hero section</p>
+        
+        <div class="border border-base-300 rounded-lg overflow-hidden bg-base-200">
+          <div class="w-full" set:html={currentSvg} />
+        </div>
+
+        <div class="mt-4 flex gap-2">
+          <a 
+            href="/og-image.svg" 
+            download="og-image.svg"
+            class="btn btn-sm btn-primary"
+          >
+            Download SVG
+          </a>
+          <button 
+            class="btn btn-sm btn-outline"
+            onclick={`
+              navigator.clipboard.writeText(${JSON.stringify(currentSvg)});
+              this.innerText = 'Copied!';
+              setTimeout(() => this.innerText = 'Copy SVG', 2000);
+            `}
+          >
+            Copy SVG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 bg-base-200 rounded-lg p-6">
+      <h3 class="text-lg font-semibold mb-3">How to test</h3>
+      <ol class="list-decimal list-inside space-y-2 text-sm text-base-content/80">
+        <li>The image above is loaded directly from <code class="bg-base-300 px-2 py-1 rounded">/public/og-image.svg</code></li>
+        <li>Test with <a href="https://www.opengraph.xyz/" target="_blank" rel="noopener" class="link link-primary">OpenGraph.xyz</a> or similar tools</li>
+        <li>Preview how it looks on Twitter, LinkedIn, Facebook, etc.</li>
+        <li>Edit <code class="bg-base-300 px-2 py-1 rounded">/public/og-image.svg</code> to update the image site-wide</li>
+      </ol>
+    </div>
+
+    <div class="mt-6 text-center">
+      <a href="/" class="btn btn-ghost">← Back to Home</a>
+    </div>
+  </div>
+</BaseLayout>

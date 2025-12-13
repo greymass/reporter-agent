@@ -2,7 +2,7 @@
 
 An LLM agent-based reporting system that provides insights into ongoing [Greymass](https://github.com/greymass) and [Wharfkit](https://github.com/wharfkit) development activities. The system automatically collects data from GitHub and blogs, then generates reports - no need to understand GitHub or browse through hundreds of projects.
 
-**View these reports online:** [reporter.greymass.io](https://reporter.greymass.io)
+**View these reports online:** [reports.greymass.io](https://reports.greymass.io)
 
 The website provides a more readable experience with a timeline view, navigation, and better formatting.
 

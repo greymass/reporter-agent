@@ -1,0 +1,123 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { extractHighlights } from '../utils/extractHighlights';
+
+// Get all reports and sort by date (newest first)
+const allReports = await getCollection('docs');
+
+// Filter for README files (summary reports)
+const summaryReports = allReports
+  .filter(report => report.id.toLowerCase().includes('readme'))
+  .filter(report => !report.id.includes('test-')) // Exclude test reports
+  .sort((a, b) => b.id.localeCompare(a.id));
+
+// Extract year-month from report ID (e.g., "2025-11/README.md" -> "2025-11")
+function getReportSlug(id: string) {
+  return id.replace(/\/README\.md$/i, '').replace(/\/README$/i, '');
+}
+
+// Parse report title from ID
+function getReportTitle(id: string) {
+  const match = id.match(/(\d{4})-(\d{2})/);
+  if (!match) return id;
+  const [, year, month] = match;
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return `${monthNames[parseInt(month) - 1]} ${year}`;
+}
+
+// Parse month/year for display
+function getMonthYear(id: string) {
+  const match = id.match(/(\d{4})-(\d{2})/);
+  if (!match) return { month: '', year: '' };
+  const [, year, month] = match;
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return {
+    month: monthNames[parseInt(month) - 1],
+    year
+  };
+}
+
+// Prepare reports data with highlights
+const reports = summaryReports.map((report) => {
+  const markdown = report.body || '';
+  const highlights = extractHighlights(markdown);
+  
+  return {
+    id: report.id,
+    slug: getReportSlug(report.id),
+    title: getReportTitle(report.id),
+    monthYear: getMonthYear(report.id),
+    highlights
+  };
+});
+
+// Get the latest report slug for header
+const latestReportSlug = reports.length > 0 ? reports[0].slug : '2025-11';
+---
+
+<BaseLayout title="All Reports" description="Browse all monthly progress reports from Greymass" latestReportSlug={latestReportSlug}>
+  <!-- Page Header -->
+  <div class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 -mt-16 pt-16">
+    <div class="container mx-auto px-4 py-16 max-w-6xl">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Progress Reports</h1>
+      <p class="text-lg text-gray-300 max-w-2xl">
+        Monthly reports documenting what we've built across Greymass and WharfKit projects.
+      </p>
+    </div>
+  </div>
+
+  <!-- Reports List -->
+  <div class="container mx-auto px-4 py-16 max-w-5xl">
+    <div class="space-y-6">
+      {reports.map((report) => (
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+          <div class="card-body">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1">
+                <h2 class="card-title text-2xl text-primary mb-3">{report.title}</h2>
+                
+                {report.highlights.length > 0 && (
+                  <ul class="space-y-2 text-sm text-base-content/80 mb-4">
+                    {report.highlights.slice(0, 4).map(highlight => (
+                      <li class="flex items-start gap-2">
+                        <span class="text-primary flex-shrink-0 mt-0.5">▸</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              
+              <div class="flex flex-col items-center justify-center w-20 h-20 rounded-full bg-primary text-primary-content shadow-lg font-bold flex-shrink-0">
+                <div class="text-xl leading-none">{report.monthYear.month}</div>
+                <div class="text-sm opacity-90 mt-1">{report.monthYear.year}</div>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-base-300">
+              <a href={`/reports/${report.slug}/readme/`} class="btn btn-sm btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Executive Summary
+              </a>
+              <a href={`/reports/${report.slug}/technical/`} class="btn btn-sm bg-blue-600 hover:bg-blue-700 text-white border-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                Technical Details
+              </a>
+              <a href={`/reports/${report.slug}/research/`} class="btn btn-sm btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Research Data
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

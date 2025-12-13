@@ -487,3 +487,56 @@ Audit found 40 issues across 19 reports. Fixed 24 README issues (cross-reference
 **This is a coordination agent**: It does not perform data collection or report writing itself. It delegates to specialized agents and manages the workflow.
 
 **Key workflow**: Research data flows through a file (`research.md`), not through agent-to-agent communication. This creates a persistent artifact that writer agents can read independently.
+
+---
+
+## Maintenance Task: Update GitHub Statistics
+
+**Frequency**: Quarterly or when requested by user
+
+**Purpose**: Keep `src/data/github.json` current with latest GitHub organization metrics for the Astro site.
+
+### When to Run
+
+- At start of each quarter (Jan, Apr, Jul, Oct)
+- When user mentions stats are stale
+- Before major site deployments
+- After significant repository creation/archival activity
+
+### Command
+
+```bash
+./scripts/count-repos.sh
+```
+
+### What It Does
+
+Fetches current metrics from Greymass and WharfKit GitHub organizations:
+- Total public repositories
+- Organization followers
+- Active repositories (updated in last 30 days)
+
+Updates `src/data/github.json` with fresh data.
+
+### Example Invocation
+
+User: "Update the GitHub stats"
+
+Director Response:
+```bash
+./scripts/count-repos.sh
+```
+
+Brief summary (1-2 sentences):
+```
+Updated GitHub statistics. Current totals: 192 repositories (122 Greymass + 70 WharfKit), 271 followers, 17 active in last 30 days.
+```
+
+### Notes
+
+- Stats file IS committed to git (not gitignored)
+- No authentication required (uses public GitHub API)
+- For higher rate limits, set `GITHUB_TOKEN` environment variable
+- Astro site imports this data directly: `import githubStats from '../data/github.json'`
+
+---

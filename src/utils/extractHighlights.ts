@@ -18,11 +18,13 @@ function stripMarkdown(text: string): string {
 
 /**
  * Extract highlights from README markdown content
- * Returns the bullet points under the "### Highlights" section
+ * Returns the top-level bullet points under the "### Highlights" section
+ * (ignores nested sub-bullets)
  */
 export function extractHighlights(markdown: string): string[] {
-  // Find the Highlights section
-  const highlightsMatch = markdown.match(/###\s+Highlights\s*\n\n((?:[-*]\s+.+\n?)+)/i);
+  // Find the Highlights section - capture until we hit another heading or end of content
+  // This regex matches everything from "### Highlights" until the next "###" heading
+  const highlightsMatch = markdown.match(/###\s+Highlights\s*\n\n([\s\S]+?)(?=\n###|\n\n###|$)/i);
   
   if (!highlightsMatch) {
     return [];
@@ -30,10 +32,15 @@ export function extractHighlights(markdown: string): string[] {
   
   const highlightsText = highlightsMatch[1];
   
-  // Extract bullet points and strip markdown formatting
+  // Extract only top-level bullet points (those that start at the beginning of the line)
+  // Ignore nested bullets (those that start with whitespace)
   const highlights = highlightsText
     .split('\n')
-    .filter(line => line.trim().startsWith('-') || line.trim().startsWith('*'))
+    .filter(line => {
+      // Check if line starts with - or * (top-level bullet)
+      // and doesn't start with whitespace (which would indicate a nested bullet)
+      return /^[-*]\s+/.test(line);
+    })
     .map(line => stripMarkdown(line.replace(/^[-*]\s+/, '').trim()))
     .filter(Boolean);
   
