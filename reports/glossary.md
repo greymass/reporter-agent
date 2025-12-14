@@ -8,11 +8,64 @@
 
 ## Table of Contents
 
+- [Standard Product & Feature Names](#standard-product--feature-names)
 - [Blockchain Technologies](#blockchain-technologies)
 - [Security & Authentication](#security--authentication)
 - [Software Architectures](#software-architectures)
 - [Development Tools & Frameworks](#development-tools--frameworks)
 - [Project-Specific Technologies](#project-specific-technologies)
+
+---
+
+## Standard Product & Feature Names
+
+**Purpose**: Maintain consistent terminology across all monthly reports to ensure clear timeline progression and avoid confusion.
+
+**Usage**: Always check this section before writing highlights. Use the same terms across all months for the same products/features.
+
+### Products
+
+**Greymass Products:**
+- **Web Authenticator** - No-download web wallet using passkeys (not "web-based wallet" or "cloud wallet")
+- **Unicove** - Block explorer and web wallet (use "Unicove v1" only when distinguishing from 2.0 during transition)
+- **Anchor Mobile** - Mobile wallet (specify "Anchor Mobile (Android)" or "Anchor Mobile (iOS)" when platform-specific)
+
+**Third-Party Integrations:**
+- **MetaMask Snap** - Before Dec 2024 launch
+- **EOS Wallet for MetaMask** - After Dec 2024 launch (branded name for MetaMask Snap)
+
+**Infrastructure:**
+- **Sextant** - Account creation service (v1 or v2 when distinguishing versions)
+- **Resource Provider** - Tool for managing transaction resources
+- **Lighthouse** - Account lookup/discovery service
+
+### Features
+
+**Account & Authentication:**
+- **account finder** - Service for finding accounts (not "account lookup service")
+- **key lookup** - Unicove UI feature for finding accounts by public key
+- **passkeys** - Acceptable technical term (widely known)
+- **fingerprint or face unlock** - Simple description of passkeys
+- **12-word backup** - Recovery phrase (not "mnemonic recovery")
+- **multisig accounts** - Accounts with group approvals (not "multisig account management")
+
+**Blockchain Features:**
+- **REX staking** - Specific type (not generic "token staking")
+- **token swaps** - Feature name (not "Token Swap functionality")
+
+**Design & Components:**
+- **component library** - Unicove Components (not "design system")
+- **dark mode** - Theme option (not "dark theme")
+- **light theme** - Theme option
+
+**Translation:**
+- **translation tools** - Generic term for translation systems
+- **Wuchale** - Specific translation system (when applicable)
+
+**Governance:**
+- **sentiment polling** - Feature for weighted community votes
+- **proposal browser** - Tool for viewing governance proposals
+- **token bridge** - For withdrawing funds cross-chain
 
 ---
 

@@ -42,14 +42,6 @@ Transforms technical research data into simple summaries that answer:
 - What can users do now that they couldn't before?
 - What got better or faster?
 
-### Writing Principles
-
-1. **Lead with outcomes** - "Made the app faster" not "Refactored code"
-2. **Use simple words** - "Backup words" not "Mnemonic seed phrase"
-3. **Focus on people** - What users can do, not what the code does
-4. **Be concrete** - "Loads in 1 second instead of 60 seconds" not "Improved performance"
-5. **Be neutral** - Facts, not cheerleading
-
 ### Example Transformations
 
 | ❌ Jargon (TOO COMPLEX) | ✅ Plain Language (SIMPLE) |
@@ -65,69 +57,87 @@ Transforms technical research data into simple summaries that answer:
 | "Created integration foundation enabling MetaMask users" | "Started building MetaMask support" |
 | "Providing liquidity to resource rental market" | "Lending tokens to earn rewards" |
 
-### SIMPLICITY TEST (ELI5)
+---
 
-Before writing anything, ask yourself:
-1. **Would a 5th grader understand this?** If not, simplify.
-2. **Am I using business or technical jargon?** (infrastructure, integration, foundation, architecture, backend, API, etc.) Replace with simple words.
-3. **Am I explaining HOW instead of WHAT?** Remove implementation details.
-4. **Would my non-technical friend understand this?** If not, rewrite.
-5. **Am I using concrete examples?** (actual numbers, specific features) Instead of abstract concepts?
+## Timeline Continuity & Terminology
 
-**Red Flag Words to Avoid:**
-- Architecture, infrastructure, ecosystem, framework, solution, initiative
-- Integration, implementation, migration, deployment, enablement
-- Backend, frontend, API, database, server, client-side
-- Leverage, utilize, enhance, optimize (use simple verbs instead)
+**PROGRESSION VERBS (Use consistently across months):**
+- ✅ "Started building" / "Began" - First month of work
+- ✅ "Continued" / "Improved" - Ongoing work (use sparingly in highlights)
+- ✅ "Completed" / "Finished" - Final month
+- ✅ "Released" / "Launched" - Public availability
+- ❌ "Built" / "Added" - Ambiguous (use for one-month features only)
+
+**TERMINOLOGY CONSISTENCY:**
+- **ALWAYS check `reports/glossary.md` for standard product and feature names**
+- Use the exact terms listed in the glossary (e.g., "account finder" not "account lookup service")
+- Review previous 2-3 months before writing to maintain consistency
+- When rebuilding/modernizing, use "Rebuilt [same term]" not a new term
+- If introducing a new product/feature, add it to the glossary
+
+**AVOID DUPLICATION:**
+- Check previous 2-3 months for similar highlights before writing
+- Don't repeat the same feature unless there's significant new work
+- Example: Don't say "added REX staking" in June and July
+
+**FEATURE LIFECYCLE:**
+- Month 1: "Started building X"
+- Month 2-N: Don't highlight unless major milestone (release, completion)
+- Month N: "Released X" or "Completed X" or "Launched X"
+- Avoid highlighting incremental progress ("continued building")
 
 ---
 
-## Real Examples: Good vs Bad
+## Body Section Organization
 
-### ❌ BAD EXAMPLE (Too Much Jargon)
+**ORGANIZE BY USER FOCUS, NOT BY TECHNICAL AREA:**
 
-> January focused on significant backend infrastructure changes, transitioning from a purely client-side application to a hybrid architecture with backend database support. This architectural shift enables new features like email-based account tracking, cross-device account management, and account recovery while maintaining the WebAuthn security model for cryptographic key management.
+Group related work that serves the same user goal:
+- ✅ Governance work together (sentiment voting + proposal pages)
+- ✅ Translation work together (Wuchale + language support)
+- ✅ Related features together (account creation + recovery)
+- ❌ Chronological order of PRs
+- ❌ Random grouping
+- ❌ Technical implementation details
 
-**Problems:** 
-- Business jargon: "infrastructure," "architecture," "shift," "enables"
-- Technical jargon: "backend," "client-side," "hybrid," "database," "WebAuthn"
-- Explains HOW it was built instead of WHAT it does
-- Sounds like documentation for developers
-- Would confuse a non-technical reader
+**PARAGRAPH STRUCTURE:**
+- First paragraph: Main features/additions for this theme
+- Second paragraph: Improvements to existing features (if applicable)
+- Keep paragraphs focused on one theme
+- Use 1-3 paragraphs per major product section
 
-### ✅ GOOD EXAMPLE (Simple and Clear)
+**Good Example:**
+```
+### Unicove
 
-> Started tracking accounts by email address so users can recover access if they lose their device. Security keys stay under user control, but the email link helps find your account again. This means you won't get locked out if you lose your phone or switch computers.
+Added sentiment voting and improved proposal pages for governance. Made it easier to review and vote on community proposals.
 
-**Why it's good:**
-- No technical or business jargon
-- Explains WHAT it does in simple terms
-- Clear user benefit (don't lose access)
-- Uses everyday language
-- A 5th grader could understand it
+Launched Wuchale translation system and added GateWallet support. Translation system makes managing multiple languages easier.
+```
+
+**Bad Example:**
+```
+### Unicove
+
+Added sentiment voting. Launched Wuchale. Improved proposal pages. Added GateWallet support. Fixed bugs.
+```
+(Fragmented, no thematic grouping, mixes unrelated topics)
 
 ---
 
-### ❌ BAD EXAMPLE (Too Much Jargon)
+## Real Example: Good vs Bad
+
+### ❌ BAD (Too Much Jargon)
 
 > January saw a major architectural migration from a basic JavaScript implementation to a modern SvelteKit-based application. This modernization brings better performance, improved maintainability, and enhanced deployment flexibility while maintaining backward compatibility with the legacy API that wallets and applications depend on.
 
-**Problems:**
-- Business jargon: "architectural migration," "modernization," "enhanced," "deployment flexibility," "leverage," "maintaining"
-- Technical jargon: "JavaScript," "SvelteKit," "implementation," "API," "backward compatibility," "legacy"
-- Focuses on code changes, not user benefits
-- Would confuse anyone without a CS degree
+**Problems:** Business jargon ("architectural migration," "modernization," "enhanced," "deployment flexibility"), technical jargon ("JavaScript," "SvelteKit," "implementation," "API," "backward compatibility," "legacy"), focuses on code changes not user benefits.
 
-### ✅ GOOD EXAMPLE (Simple and Clear)
+### ✅ GOOD (Simple and Clear)
 
 > Made the account search tool faster. It now finds accounts in seconds instead of minutes, and all existing wallets still work with it. Users notice the speed improvement when connecting their wallets.
 
-**Why it's good:**
-- Simple everyday words
-- Concrete improvement (seconds vs minutes)
-- Clear benefit anyone can understand
-- No technical or business jargon
-- A friend or family member would understand it
+**Why it's good:** Simple everyday words, concrete improvement (seconds vs minutes), clear benefit anyone can understand, no jargon, a friend or family member would understand it.
 
 ---
 
@@ -269,92 +279,83 @@ Use markdown formatting to make key concepts and metrics stand out:
 - ❌ "Created integration foundation enabling users" (business jargon)
 - ❌ "Providing liquidity to resource rental market" (finance jargon)
 - ❌ "Published progress update blog post covering May's work" (publications belong in their own section, not highlights)
+- ❌ "Prepared Unicove for launch with 77 updates" (number isn't meaningful)
+
+---
+
+## Highlight Quality Checklist
+
+**Before finalizing highlights, verify:**
+
+1. ✅ **ELI5**: Would a 5th grader understand this?
+2. ✅ **Verb**: Using correct progression verb? (started/improved/completed/released)
+3. ✅ **Jargon**: No business or technical jargon?
+4. ✅ **Duplicate**: Checked previous 2-3 months?
+5. ✅ **Terminology**: Checked reports/glossary.md?
+6. ✅ **Outcome**: Describes WHAT users can do, not HOW?
+7. ✅ **Specificity**: Specific, not generic?
+8. ✅ **Length**: Concise but complete?
 
 ### Language Simplification
 
 Common technical terms and their plain language equivalents:
 
 **Banned Business Jargon:**
-- ❌ "Architecture" / "Architectural" → ✅ Don't mention it (describe the outcome instead)
+- ❌ "Architecture/Architectural" → ✅ Describe outcome instead
 - ❌ "Deploy/Deployment" → ✅ "Released" or "launched"
-- ❌ "Ecosystem" → ✅ "Set of tools" or describe specifically
-- ❌ "Enablement" / "Enable" → ✅ "Let users" or "allows"
+- ❌ "Ecosystem" → ✅ "Set of tools" or be specific
+- ❌ "Enablement/Enable" → ✅ "Let users" or "allows"
 - ❌ "Foundation" → ✅ "Started building" or "began work on"
-- ❌ "Framework" → ✅ Don't mention (describe what users can do)
+- ❌ "Framework" → ✅ Describe what users can do
 - ❌ "Implementation" → ✅ "Built" or "added" or "created"
-- ❌ "Infrastructure" → ✅ "Tool" or "service" or describe specifically
+- ❌ "Infrastructure" → ✅ "Tool" or "service" or be specific
 - ❌ "Initiative" → ✅ "Project" or "work on"
-- ❌ "Integration" → ✅ "Connection" or "works with" or describe what it does
-- ❌ "Leverage" → ✅ "Use" or "take advantage of"
-- ❌ "Migration" → ✅ Don't mention (describe the outcome)
-- ❌ "Solution" → ✅ "Tool" or describe specifically
+- ❌ "Integration" → ✅ "Connection" or "works with"
+- ❌ "Leverage" → ✅ "Use"
+- ❌ "Migration" → ✅ Describe outcome instead
+- ❌ "Solution" → ✅ "Tool" or be specific
 - ❌ "Utilize" → ✅ "Use"
+- ❌ "Advanced development" → ✅ "Continued development", "Progressed", "Improved"
 
 **Banned Technical Jargon:**
-- ❌ "API" → ✅ "Connection" or describe what it does
+- ❌ "API" → ✅ "Connection" or describe function
 - ❌ "Authentication" → ✅ "Login" or "signing in"
 - ❌ "Authorization" → ✅ "Permission"
-- ❌ "Backend" / "Frontend" → ✅ Never mention (describe what users can do)
-- ❌ "Client-side" / "Server-side" → ✅ Never mention
+- ❌ "Backend/Frontend" → ✅ Never mention
+- ❌ "Client-side/Server-side" → ✅ Never mention
 - ❌ "Configuration" → ✅ "Settings"
-- ❌ "Database" → ✅ Describe what it enables (e.g., "saving accounts")
+- ❌ "Database" → ✅ Describe what it enables ("saving accounts")
 - ❌ "Internationalization" → ✅ "Multi-language support" or "translations"
-- ❌ "Refactoring" → ✅ Never mention (describe the outcome like "made faster")
+- ❌ "Refactoring" → ✅ Describe outcome ("made faster")
 
-**Progress Terms**:
-- ❌ AVOID: "Advanced development" (sounds like sophisticated/complex development)
-- ✅ USE: "Continued development", "Progressed", "Made progress on", "Improved"
-- ❌ AVOID: "Advanced [Project Name]" when describing month-to-month progress
-- ✅ USE: "Continued [Project Name] work", "Progressed on [Project Name]", "Improved [Project Name]"
+**Release Status**:
+- **Web Authenticator**: In development (not released). Say "Continued development", "Prototyped", "Explored", "Tested"
+- **Backup systems**: All experimental prototypes. Say "Prototyped backup", "Explored recovery", "Tested approaches"
+- When actually released: Say "Released" or "Made available"
 
-**Release Status Language**:
-- ❌ NEVER say "launched", "released", "deployed", "in production", "live" for Web Authenticator (still in development)
-- ✅ USE: "Continued development", "Prototyped", "Explored", "Tested", "Experimented"
-- ❌ NEVER say backup/recovery systems are "launched" or "available" (all are experimental prototypes)
-- ✅ USE: "Prototyped backup", "Explored recovery", "Tested approaches"
-- ✅ When something IS actually released, say "Released" or "Made available"
-
-**Project-Specific Terms**:
-- **Web Authenticator**: In development since 2024, not released. Ready for release as of Nov 2025 but on hold pending foundation asset handoff
-- **Backup systems**: All backup work (QR codes, cloud storage, mnemonic phrases, browser extensions) are experimental prototypes
-- **Vaulta-contracts**: Repository containing multiple contracts (API, registry, tokens, account creation, sentiment, etc.) - NOT just sentiment
-- **Shipload**: Space trading game (not "blockchain data service")
+**Project-Specific**:
+- **Vaulta-contracts**: Multiple contracts (API, registry, tokens, account creation, sentiment) - NOT just sentiment
+- **Shipload**: Space trading game
 - **2nicove-api**: Refer to as "Unicove API"
-- "SDK" → Use: "Developer tools"
-- "API" → Use: "Connection" or "Service" or describe what it does
-- "Database" → Use: what it enables (e.g., "account tracking")
-- "Server" → Use: what it enables (e.g., "account recovery")
-- "Client-side" / "Server-side" → Never mention
 
-**ACCEPTABLE DOMAIN TERMS (Use these as-is):**
-- "Multisig" / "Multi-sig" / "Msig" → Keep as-is (standard blockchain terminology)
-- "Token Swap" / "Token Swaps" / "Swap" / "Swapping" → Keep as-is (standard blockchain terminology)
-  - **Important**: Use "swap" terminology, NOT "trade" or "trading" - swaps execute against smart contracts, not counterparties
-  - Swaps are automated exchanges with contracts, trades imply person-to-person transactions
-- "WebAuthn" / "webauthn" → Keep as-is (recognizable web authentication standard)
-- "Passkey" / "passkeys" → Keep as-is (recognizable authentication technology)
-- "Wallet" / "Web Wallet" → Keep as-is (standard technical term)
-- "Block Explorer" → Keep as-is (standard technical term)
-- These are domain-specific terms readers need to understand, not technical jargon
+**Acceptable Domain Terms** (keep as-is):
+- Multisig/Multi-sig/Msig, Token Swap/Swaps (NOT "trade"/"trading"), WebAuthn, Passkey/passkeys, Wallet/Web Wallet, Block Explorer
 
-**GOOD PATTERNS (Use these):**
+**Good Patterns**:
 - "Shipped X updates" not "Merged X PRs"
-- "Released" not "Deployed"
+- "Released" not "Deployed"  
 - "Improved" not "Enhanced"
 - "Fixed" not "Resolved"
 - "Added [capability]" not "Implemented [technical thing]"
 - "Faster [outcome]" not "Optimized [system]"
-- "Enables [user benefit]" not "Provides [technical capability]"
 
-**OUTCOME-FOCUSED WRITING (ELI5):**
+**Outcome-Focused Examples**:
 - ❌ "Added backend database support" → ✅ "Started saving accounts to help with recovery"
 - ❌ "Migrated to SvelteKit framework" → ✅ "Made the app faster"
-- ❌ "Refactored account state architecture" → ✅ "Made accounts load faster"
-- ❌ "Implemented readonly contract APIs" → ✅ "Made loading faster"
-- ❌ "Created integration foundation" → ✅ "Started building" or "began work on"
-- ❌ "Expanded infrastructure" → ✅ "Built a tool" or "created a service"
-- ❌ "Providing liquidity to resource rental market" → ✅ "Lending tokens to earn rewards"
-- ❌ "Added token trading" / "trade tokens" → ✅ "Added token swaps" / "swap tokens"
+- ❌ "Refactored account state" → ✅ "Made accounts load faster"
+- ❌ "Created integration foundation" → ✅ "Started building"
+- ❌ "Expanded infrastructure" → ✅ "Built a tool"
+- ❌ "Added token trading" → ✅ "Added token swaps"
 
 ### Cross-Referencing Previous Reports
 
@@ -438,40 +439,24 @@ This file contains structured research data including:
 - Notable Metrics sections highlight performance wins
 - Source links available if you need to verify details
 
-**Verification before saving (SIMPLICITY CHECK):**
-- [ ] Read `research.md` file completely
-- [ ] **Navigation links** added at top (first line after title): "**Navigation**: [← Previous Month](../YYYY-MM/README.md) | [Next Month →](../YYYY-MM/README.md)"
-  - Include "← Previous Month" link only if previous month report exists
-  - Include "Next Month →" link only if next month report exists
-  - If this is the chronologically latest report, omit "Next Month →" link
-  - Check reports/ directory to determine which months exist
-- [ ] **Previous month updated**: If a previous month exists, read its README.md and add/update its "Next Month →" link to point to this new report
-- [ ] Cross-reference links added after navigation: "*Also available: [Technical Report](technical.md) | [Research Data](research.md)*"
-- [ ] **DATE ACCURACY**: All dates and chronological references are correct
-- [ ] **NO FUTURE REFERENCES**: Do not reference events occurring after the report period
-- [ ] **LINK ACCURACY**: All URLs are complete, correctly formatted markdown links
-- [ ] **LINK VERIFICATION**: Cross-reference links work (technical.md, research.md exist)
-- [ ] **NO technical jargon anywhere** (backend, frontend, infrastructure, architecture, migration, framework names)
-- [ ] **NO implementation details** (HOW it was built - only WHAT and WHY)
-- [ ] **NO PR numbers or GitHub links**
-- [ ] **NO YAML front matter**
-- [ ] Highlights are outcome-focused (what users get, not what changed)
-- [ ] **Highlights use text formatting** (bold for products/features, italic for benefits/emphasis, metrics highlighted)
-- [ ] **NO publications in highlights** (publications belong only in Publications section)
-- [ ] Publications (if any) placed after Highlights with URL links
-- [ ] All publication references include complete markdown links with URLs
-- [ ] Sections ordered by activity
-- [ ] Each section limited to 2-3 paragraphs maximum
+**Verification before saving:**
+- [ ] Read `research.md` completely
+- [ ] Navigation links at top (include Previous/Next only if those months exist)
+- [ ] Previous month updated with Next link to this report
+- [ ] Cross-reference links: "*Also available: [Technical Report](technical.md) | [Research Data](research.md)*"
+- [ ] Dates accurate, no future references
+- [ ] All URLs complete and correctly formatted
+- [ ] NO technical jargon (backend, frontend, infrastructure, architecture, migration, frameworks)
+- [ ] NO implementation details (HOW - only WHAT and WHY)
+- [ ] NO PR numbers or GitHub links
+- [ ] NO YAML front matter
+- [ ] Highlights outcome-focused with formatting (bold products/features, italic benefits)
+- [ ] NO publications in highlights (separate Publications section)
+- [ ] Publications include URL links
+- [ ] Sections ordered by activity (2-3 paragraphs max each)
 - [ ] Length 400-1000 words
-- [ ] Neutral, factual tone
-- [ ] All repo names use friendly display names
-- [ ] Focus on work outcomes, not individuals
-- [ ] **SIMPLICITY TEST: Would a non-technical executive understand every sentence?**
-- [ ] **OUTCOME TEST: Does every paragraph explain user benefits?**
-- [ ] **JARGON TEST: Zero mentions of frameworks, databases, servers, APIs, architecture**
-- [ ] **FORMATTING TEST: Are key concepts, products, and metrics visually emphasized?**
-- [ ] **CHRONOLOGY TEST: No references to future events or incorrect dates**
-- [ ] **LINK TEST: All markdown links are complete and properly formatted**
+- [ ] Neutral tone, friendly repo names
+- [ ] ELI5 test passed
 
 ---
 

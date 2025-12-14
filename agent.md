@@ -140,23 +140,37 @@ Review `research.md` and let me know if you need additional data, more detail on
 
 ### Step 2a: Iterate on Research (if needed)
 
-**User may request changes such as**:
-- "Can you get more detail on PR #123?"
-- "Check if there were any commits to repo X"
-- "Look for blog posts on Medium too"
-- "Get the discussion comments from PR #456"
+**If user requests changes**: Re-invoke Researcher with specific instructions, then present brief update with key additions and ask if ready to proceed.
 
-**For each request**:
-1. Re-invoke Researcher agent with specific instructions
-2. After researcher completes, present brief update (2-3 paragraphs):
+---
+
+### Step 2b: Review Previous Months for Context
+
+**CRITICAL: Before invoking writer agents, review previous 2-3 months for context:**
+
+1. Read the highlights from previous 2-3 months:
+   ```bash
+   grep -A 10 "### Highlights" reports/YYYY-MM/README.md
+   ```
+
+2. Check reports/glossary.md for standard terminology:
+   - Product names (Web Authenticator, Unicove, etc.)
+   - Feature names (account finder, REX staking, etc.)
+   - Ensure consistency with established terms
+
+3. Check for ongoing work that needs timeline continuity:
+   - Features that were "started" and might be "completed" this month
+   - Terminology used for similar features
+   - Topics that shouldn't be duplicated
+
+4. Pass this context to Summary Writer with instructions like:
    ```markdown
-   Updated research with [what was added]. Key additions:
+   PREVIOUS MONTH CONTEXT:
+   - September mentioned "Started building backup extension"
+   - Use standard terminology from glossary: "account finder" (not "account lookup service")
+   - Don't duplicate: REX staking already highlighted in June
    
-   - [Finding 1]
-   - [Finding 2]
-   - [Finding 3]
-   
-   Any other changes needed, or ready to proceed to writing?
+   REMINDER: Check reports/glossary.md for standard product and feature names.
    ```
 
 **Keep responses concise** - relay only key findings, don't repeat entire research data.
@@ -231,9 +245,44 @@ Task(
 
 ---
 
-### Step 4a: Verify Report Quality
+### Step 4a: Timeline Verification
 
-After both writer agents complete, verify quality before updating index:
+**CRITICAL: After Summary Writer completes, verify timeline consistency:**
+
+1. Extract this month's highlights:
+   ```bash
+   grep -A 10 "### Highlights" reports/YYYY-MM/README.md
+   ```
+
+2. Compare with previous 2-3 months:
+   ```bash
+   grep -A 10 "### Highlights" reports/YYYY-MM-PREV/README.md
+   ```
+
+3. Check for timeline issues:
+   - **Duplicate features**: Same highlight as previous months?
+   - **Terminology drift**: Different names for same feature?
+   - **Progression errors**: Says "Added X" but previous month said "Started X" (should be "Completed")?
+   - **Glossary compliance**: Names match reports/glossary.md?
+
+4. If issues found, present to user:
+   ```markdown
+   Timeline verification found potential issues:
+   
+   - [Month + Issue]: "Added X" but last month said "Started X" - should this be "Completed X"?
+   - [Month + Issue]: Using "account lookup service" but glossary/previous months use "account finder"
+   - [Month + Issue]: REX staking highlighted again - was there new work or is this a duplicate?
+   
+   Should I fix these, or are they correct as-is?
+   ```
+
+5. Make approved corrections, then proceed to Step 4b
+
+---
+
+### Step 4b: Verify Report Quality
+
+After timeline verification and any corrections, verify quality before updating index:
 
 **File Existence**:
 ```bash
@@ -285,20 +334,7 @@ After verification passes:
 - **[Month YYYY](reports/YYYY-MM/README.md)** - Brief overview ([technical](reports/YYYY-MM/technical.md) | [research](reports/YYYY-MM/research.md))
 ```
 
-**Brief Overview Guidelines**:
-- 3-5 words maximum
-- Name specific features/products, not abstract concepts
-- Prefer concrete nouns over vague terms
-- Good: "Passkeys, Backup V2", "CLI tools, auto-signing"
-- Avoid: "improvements, updates, refinements, enhancements"
-- Read highlights section for 1-2 most significant items
-
-**Pattern Guide**:
-- Feature names: "Passkeys, Backup V2" ✅
-- Product + capability: "Web Authenticator launch" ✅
-- Specific tech: "WebAuthn, Apple login" ✅
-- Avoid generic verbs: "improvements, updates" ❌
-- Avoid vague nouns: "enhancements, changes" ❌
+**Brief Overview** (3-5 words max): Name specific features/products. Good: "Passkeys, Backup V2", "CLI tools, auto-signing". Avoid: "improvements, updates, refinements, enhancements".
 
 ---
 
@@ -328,28 +364,9 @@ After verification passes:
 
 **User**: "Generate October 2025 report"
 
-**Director**:
-1. Creates TODO list
-2. Creates report directory (`mkdir -p reports/2025-10`)
-3. Invokes Researcher with October date range
-   - Researcher saves `reports/2025-10/research.md`
-4. Verifies `research.md` exists
-5. Presents summary to user
-6. **ITERATES with user on research**:
-   - User reviews research.md
-   - User may request additional data, clarifications, or changes
-   - Director re-invokes Researcher with specific requests
-   - Repeats until user explicitly confirms: "proceed to writing"
-7. **After explicit user confirmation**:
-8. **Invokes both writer agents in parallel** (Summary Writer + Technical Writer)
-9. **Verifies report quality** (Step 4a checks)
-10. Updates README.md index (only if verification passes)
-11. Responds: "October 2025 reports generated. Research data and reports saved to reports/2025-10/"
+**Director**: Creates TODO → Creates directory → Invokes Researcher → Verifies research.md → Presents summary → Iterates with user → After explicit confirmation → Invokes both writers in parallel → Verifies quality → Updates index
 
-**Key workflow changes**: 
-- Research data is saved to file, writer agents read it directly (not passed inline)
-- Research phase includes user review and iteration loop before writing begins
-- Writing phase only starts after explicit user confirmation
+**Key points**: Research saved to file, user review required before writing, writers run in parallel.
 
 ---
 
