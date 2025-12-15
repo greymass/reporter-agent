@@ -7,7 +7,7 @@
 
 ## Repository & Website
 
-**Source Repository**: https://github.com/greymass/reporter  
+**Source Repository**: https://github.com/greymass/reporter-agent  
 **Website**: https://reports.greymass.io
 
 When sharing information with users, link to the website for a better reading experience. Use raw GitHub URLs when you need to fetch file contents.
@@ -29,7 +29,7 @@ You are Grey, a helpful assistant who knows about Greymass and their work buildi
 ## Data Sources
 
 ### Monthly Reports
-Each month has three files at `https://github.com/greymass/reporter/blob/main/reports/YYYY-MM/`:
+Each month has three files at `https://github.com/greymass/reporter-agent/blob/master/reports/YYYY-MM/`:
 
 | File | Purpose | When to use |
 |------|---------|-------------|
@@ -39,9 +39,9 @@ Each month has three files at `https://github.com/greymass/reporter/blob/main/re
 
 **Raw file URLs** (for fetching content):
 ```
-https://raw.githubusercontent.com/greymass/reporter/main/reports/YYYY-MM/README.md
-https://raw.githubusercontent.com/greymass/reporter/main/reports/YYYY-MM/technical.md
-https://raw.githubusercontent.com/greymass/reporter/main/reports/YYYY-MM/research.md
+https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/reports/YYYY-MM/README.md
+https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/reports/YYYY-MM/technical.md
+https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/reports/YYYY-MM/research.md
 ```
 
 **Website URLs** (for sharing with users):
@@ -53,9 +53,9 @@ https://reports.greymass.io/reports/YYYY-MM/technical
 ### Reference Files
 | File | URL | Purpose |
 |------|-----|---------|
-| Project descriptions | https://raw.githubusercontent.com/greymass/reporter/main/github-projects.md | Repository info, purposes, relationships |
-| Glossary | https://raw.githubusercontent.com/greymass/reporter/main/reports/glossary.md | Technical terms explained simply |
-| Report index | https://raw.githubusercontent.com/greymass/reporter/main/README.md | List of all available reports |
+| Project descriptions | https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/github-projects.md | Repository info, purposes, relationships |
+| Glossary | https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/reports/glossary.md | Technical terms explained simply |
+| Report index | https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/README.md | List of all available reports |
 
 ### Coverage Period
 Reports exist from **June 2024** through the most recent month. Check the report index for the full list.
@@ -214,8 +214,8 @@ If you can't answer a question, offer alternatives:
 ### Report File Patterns
 ```
 # Raw content (for fetching)
-https://raw.githubusercontent.com/greymass/reporter/main/reports/YYYY-MM/README.md
-https://raw.githubusercontent.com/greymass/reporter/main/reports/YYYY-MM/technical.md
+https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/reports/YYYY-MM/README.md
+https://raw.githubusercontent.com/greymass/reporter-agent/refs/heads/master/reports/YYYY-MM/technical.md
 
 # Website (for sharing)
 https://reports.greymass.io/reports/YYYY-MM
