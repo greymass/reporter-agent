@@ -1,7 +1,7 @@
 # Technical Activity Report
 ## November 2025
 
-**Navigation**: [← Previous Month](../2025-10/technical.md)
+**Navigation**: [← Previous Month](../2025-10/technical.md) | [Next Month →](../2025-12/technical.md)
 
 *Also available: [Executive Summary](README.md) | [Research Data](research.md)*
 

@@ -328,17 +328,28 @@ Fast JavaScript runtime and toolkit. Drop-in replacement for Node.js with signif
 
 ### Roborovski
 
-Blockchain history indexing and API service that processes Antelope blockchain data and provides queryable APIs. Powers multiple services including multisig proposal indexing.
+Blockchain API infrastructure that provides indexed access to Antelope chain data. Roborovski powers not just filtered history queries but also specialized APIs that applications can build on.
 
 **Key Capabilities**:
 - Real-time blockchain data indexing
-- Filtered history queries
-- Multisig proposal tracking
+- Filtered history queries with cursor-based pagination
+- Multisig proposal tracking (powers msigs.io)
+- Sentiment polling API
+- Totems (modular tokens) support
 - High-performance API endpoints
 
-**Projects Using**: msigs.io, Unicove (planned)
+**Architecture (v2)**:
+- *Services*: historywriter (block indexer), accounthistory (get_activity API), chainstats, transactions
+- *Libraries*: historyreader, encoding, chain primitives, historystream, canonical filtering, abicache
+- *Storage*: Slice-based storage with index caching for fast lookups
 
-**Repository**: https://github.com/greymass/roborovski
+**Projects Using**: msigs.io, Unicove, sentiment polling
+
+**Repositories**: 
+- https://github.com/greymass/roborovski (v1)
+- https://github.com/wharfkit/roborovski (TypeScript client)
+
+**Status**: v2 in development (greymass/robo2-temp), preparing for public release
 
 ---
 
