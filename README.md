@@ -10,7 +10,8 @@ The website provides a more readable experience with a timeline view, navigation
 
 ## Reports
 
-- **[January 2026](reports/2026-01/README.md)** - Latest report - Roborovski open-sourced, sentiment expansion ([technical](reports/2026-01/technical.md) | [research](reports/2026-01/research.md))
+- **[February 2026](reports/2026-02/README.md)** - Latest report - Session keys, contract browser, prototypes ([technical](reports/2026-02/technical.md) | [research](reports/2026-02/research.md))
+- **[January 2026](reports/2026-01/README.md)** - Roborovski open-sourced, sentiment expansion ([technical](reports/2026-01/technical.md) | [research](reports/2026-01/research.md))
 - **[December 2025](reports/2025-12/README.md)** - Governance voting, session keys ([technical](reports/2025-12/technical.md) | [research](reports/2025-12/research.md))
 - **[November 2025](reports/2025-11/README.md)** - Sentiment polling, governance tools ([technical](reports/2025-11/technical.md) | [research](reports/2025-11/research.md))
 - **[October 2025](reports/2025-10/README.md)** - Passkey integration, backup prototypes ([technical](reports/2025-10/technical.md) | [research](reports/2025-10/research.md))

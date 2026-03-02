@@ -1,7 +1,7 @@
 # Greymass Team Activity Report
 ## January 2026
 
-**Navigation**: [← Previous Month](../2025-12/README.md)
+**Navigation**: [← Previous Month](../2025-12/README.md) | [Next Month →](../2026-02/README.md)
 
 *Also available: [Technical Report](technical.md) | [Research Data](research.md)*
 
