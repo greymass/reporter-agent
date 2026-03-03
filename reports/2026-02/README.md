@@ -34,8 +34,8 @@ Several experimental projects appeared in February. A **chat prototype** and a *
 
 ### WharfKit Updates
 
-Session key support spread across multiple WharfKit libraries. The Session Kit adopted a newer transaction submission method with better error reporting. The core Antelope library standardized how errors from that method are handled. The Resource Provider plugin shipped a major update with smarter fee calculations that account for memory costs. The autocorrect plugin fixed a precision issue, and the co-signing plugin received a compatibility fix.
+Session key support spread across multiple WharfKit libraries. The Session Kit adopted a newer transaction submission method with better error reporting. The core Antelope library standardized how errors from that method are handled. The Resource Provider received a major rewrite on both the server side (cosigning, usage tracking, contract cache rewrite) and the client plugin (smarter fee calculations that account for memory costs). The autocorrect plugin fixed a precision issue, and the co-signing plugin received a compatibility fix.
 
 ### Summary
 
-Shipped updates across 13 repositories with 4 new projects created. February focused on rolling session keys out across the product stack, redesigning contract browsing and transaction pages in Unicove, stabilizing Roborovski v2 with automated testing, and prototyping real-time apps that demonstrate the full toolkit working together.
+Shipped updates across 14 repositories with 4 new projects created. February focused on rolling session keys out across the product stack, redesigning contract browsing and transaction pages in Unicove, stabilizing Roborovski v2 with automated testing, and prototyping real-time apps that demonstrate the full toolkit working together.

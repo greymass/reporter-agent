@@ -28,6 +28,7 @@ February 2026 delivered session keys across the full application stack, from Wha
   - [greymass/web-authenticator](#greymassweb-authenticator)
   - [greymass/lighthouse](#greymasslighthouse)
   - [greymass/account-creation-portal](#greymassaccount-creation-portal)
+  - [greymass/resource-provider](#greymassresource-provider)
 - [Wharfkit Organization](#wharfkit-organization)
   - [wharfkit/session](#wharfkitsession)
   - [wharfkit/wallet-plugin-web-authenticator](#wharfkitwallet-plugin-web-authenticator)
@@ -78,6 +79,12 @@ The Unicove msig proposal loading now sources data from Roborovski's msig API fi
 **Repositories**: greymass/chat-prototype, greymass/forum-protoype
 
 Two new repositories were created as proof-of-concept messaging applications built on a smart contract designed to showcase recent network features under demanding, real-time conditions. Both the chat-prototype and forum-protoype exercise the combined infrastructure stack: Web Authenticator onboarding, session keys for low-security actions, resource provider for transaction resources, and Roborovski-based real-time streaming APIs for live updates.
+
+### Resource Provider Stack
+
+**Repositories**: greymass/resource-provider, wharfkit/transact-plugin-resource-provider
+
+The server-side resource provider received a major rewrite during the same week the client-side WharfKit plugin shipped v2.0.0-rc1. The server added transaction cosigning with usage tracking, rewrote the contract cache, and added v1/provider API compatibility. The client plugin updated fee calculations to account for RAM actions and improved token detection. Together these form the full stack for fee-free transaction support.
 
 ### Light Account Prototype
 
@@ -273,6 +280,32 @@ Removed defunct blockchain networks from the account lookup service.
 ##### Minor Changes
 
 - **#30**: Production <- Dev ([link](https://github.com/greymass/account-creation-portal/pull/30)) - Production deployment merging accumulated dev branch changes (109 additions, 41 deletions across 11 files). Merged 2026-02-24.
+
+---
+
+### greymass/resource-provider
+
+**Repository**: https://github.com/greymass/resource-provider
+**Activity**: 11 commits on dev branch
+**Related Work**: See [wharfkit/transact-plugin-resource-provider](#wharfkittransact-plugin-resource-provider)
+
+#### Overview
+
+Major rewrite of the server-side resource provider application. Added transaction cosigning with usage tracking, rewrote the contract cache, extracted self-management into an independent system, and added v1/provider API compatibility. The wharfkit/transact-plugin-resource-provider v2.0.0-rc1 (released the same week) is the client-side counterpart that communicates with this service.
+
+#### Commits (Feb 20-25)
+
+- [49d9cb9](https://github.com/greymass/resource-provider/commit/49d9cb9) (Feb 20): Cosigning + usage tracking
+- [f2b3783](https://github.com/greymass/resource-provider/commit/f2b3783) (Feb 20): Cleanup
+- [803a619](https://github.com/greymass/resource-provider/commit/803a619) (Feb 21): Contract cache rewrite
+- [3e0eb2d](https://github.com/greymass/resource-provider/commit/3e0eb2d) (Feb 21): Moved self-management to independent system
+- [4e61127](https://github.com/greymass/resource-provider/commit/4e61127) (Feb 21): Fixed tests and updated HTTP service
+- [5b561ad](https://github.com/greymass/resource-provider/commit/5b561ad) (Feb 21): Setup/env cleanup
+- [49f80d2](https://github.com/greymass/resource-provider/commit/49f80d2) (Feb 23): Unified service account code
+- [faa16e6](https://github.com/greymass/resource-provider/commit/faa16e6) (Feb 23): Removed base level setup — now requires individual setup commands
+- [abd90df](https://github.com/greymass/resource-provider/commit/abd90df) (Feb 24): v1/provider compatibility + usage endpoint
+- [37ed66f](https://github.com/greymass/resource-provider/commit/37ed66f) (Feb 25): Moved usage to rolling expiration + linting
+- [803cbe6](https://github.com/greymass/resource-provider/commit/803cbe6) (Feb 25): Refactored to pull reusable functions out
 
 ---
 

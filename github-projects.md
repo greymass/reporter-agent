@@ -137,6 +137,15 @@ This file provides comprehensive information about repositories across Greymass,
 - **Description**: Service for discovering and looking up blockchain accounts
 - **Status**: Maintenance
 
+#### resource-provider
+- **Name**: Resource Provider
+- **URL**: https://github.com/greymass/resource-provider
+- **Visibility**: Public
+- **Purpose**: Server-side resource management and transaction cosigning service
+- **Description**: Application that manages network resources (CPU + NET) for accounts and provides an HTTP API for transaction cosigning. The server-side counterpart to wharfkit/transact-plugin-resource-provider
+- **Status**: Active development
+- **Stack**: TypeScript
+
 #### fuel-cosigner
 - **Name**: Fuel APIs
 - **URL**: https://github.com/greymass/fuel-cosigner

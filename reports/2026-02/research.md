@@ -19,7 +19,7 @@
 
 ## Summary Statistics
 
-- **Greymass**: 4 PRs merged across 3 repositories + 31 commits to Roborovski (CI/CD, performance, streaming, new API endpoints) + 28 commits to Unicove (robo2 branch) + 2 commits to Lighthouse + 1 commit to account-creation-portal
+- **Greymass**: 4 PRs merged across 3 repositories + 31 commits to Roborovski (CI/CD, performance, streaming, new API endpoints) + 28 commits to Unicove (robo2 branch) + 11 commits to resource-provider (cosigning, contract cache rewrite, usage tracking) + 2 commits to Lighthouse + 1 commit to account-creation-portal
 - **Wharfkit**: 2 PRs merged across 2 repositories + 17 commits across 8 repositories
 - **New Repositories**: 5 created (all Greymass)
 - **Publications**: 0 blog posts
@@ -179,6 +179,30 @@ Additional work on the dev branch introducing new API endpoints and cleaning up 
 
 - 2aaa16a (Feb 24): Removed ayetu/koy - [link](https://github.com/greymass/lighthouse/commit/2aaa16a97dffe14e69cd4c18d3da7cdf3b8c1608)
 - 2c6b164 (Feb 24): Removed UX - [link](https://github.com/greymass/lighthouse/commit/2c6b164c42c3b5796ab88d20fb6014e7498a3b61)
+
+---
+
+### greymass/resource-provider
+
+**Repository**: https://github.com/greymass/resource-provider
+**Activity**: 11 commits on dev branch
+**Related Work**: See [wharfkit/transact-plugin-resource-provider](#wharfkittransact-plugin-resource-provider)
+
+**Context**: Server-side resource provider application that manages network resources (CPU + NET) and cosigns transactions. The wharfkit/transact-plugin-resource-provider is the client-side plugin that communicates with this service. February saw a major rewrite of the server-side codebase.
+
+#### Commits (Feb 20-25)
+
+- 49d9cb9 (Feb 20): Cosigning + usage tracking - [link](https://github.com/greymass/resource-provider/commit/49d9cb9)
+- f2b3783 (Feb 20): Cleanup - [link](https://github.com/greymass/resource-provider/commit/f2b3783)
+- 803a619 (Feb 21): Contract cache rewrite - [link](https://github.com/greymass/resource-provider/commit/803a619)
+- 3e0eb2d (Feb 21): Moved self-management to independent system - [link](https://github.com/greymass/resource-provider/commit/3e0eb2d)
+- 4e61127 (Feb 21): Fixed tests and updated http service - [link](https://github.com/greymass/resource-provider/commit/4e61127)
+- 5b561ad (Feb 21): setup/env clean up - [link](https://github.com/greymass/resource-provider/commit/5b561ad)
+- 49f80d2 (Feb 23): Unified service account code - [link](https://github.com/greymass/resource-provider/commit/49f80d2)
+- faa16e6 (Feb 23): Removed base level setup - now requires individual setup commands - [link](https://github.com/greymass/resource-provider/commit/faa16e6)
+- abd90df (Feb 24): v1/provider compatibility + usage endpoint - [link](https://github.com/greymass/resource-provider/commit/abd90df)
+- 37ed66f (Feb 25): Moved usage to rolling expiration + linting - [link](https://github.com/greymass/resource-provider/commit/37ed66f)
+- 803cbe6 (Feb 25): Refactored to pull reusable functions out - [link](https://github.com/greymass/resource-provider/commit/803cbe6)
 
 ---
 
